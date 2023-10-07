@@ -1,4 +1,5 @@
-﻿using System.Net.Http;
+﻿using System;
+using System.Net.Http;
 using System.Threading.Tasks;
 using FluentAssertions;
 
@@ -21,7 +22,8 @@ namespace WebRequest.Specs.Drivers
 
         public void CheckResponseStatusCode(int expectedStatusCode)
         {
-            _httpResponseMessage.StatusCode.Should().Be(expectedStatusCode);
+            System.Net.HttpStatusCode statusCode = Enum.Parse<System.Net.HttpStatusCode>(expectedStatusCode.ToString());
+            _httpResponseMessage.StatusCode.Should().Be(statusCode);
         }
     }
 }
