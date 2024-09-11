@@ -1,0 +1,13 @@
+{
+  "flaui": {
+    "settings": {
+      "uia": "UIA2"
+    },
+    "profiles": {
+      "Futile Calculator": {
+        "app": "..\\..\\..\\..\\Calculator\\bin\\Debug\\net8.0-windows\\Calculator.exe",
+        "launch": "Exe"
+      }
+    }
+  }
+}
