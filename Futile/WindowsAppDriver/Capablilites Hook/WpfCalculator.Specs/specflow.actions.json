@@ -1,0 +1,8 @@
+{
+  "windowsAppDriver": {
+    "capabilities": {
+      "app": "../../../../WpfCalculator/bin/Debug/net8.0-windows/WpfCalculator.exe"
+    },
+    "WindowsAppDriverPath": "C:/Program Files (x86)/Windows Application Driver/WinAppDriver.exe"
+  }
+}
