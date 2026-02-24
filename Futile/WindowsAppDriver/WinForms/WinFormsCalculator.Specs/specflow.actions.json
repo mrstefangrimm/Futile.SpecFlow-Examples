@@ -1,7 +1,7 @@
 {
   "windowsAppDriver": {
     "capabilities": {
-      "app": "../../../../WinFormsCalculator/bin/Debug/net8.0-windows/WinFormsCalculator.exe"
+      "app": "../../../../WinFormsCalculator/bin/Debug/net10.0-windows/WinFormsCalculator.exe"
     },
     "WindowsAppDriverPath": "C:/Program Files (x86)/Windows Application Driver/WinAppDriver.exe"
   }
