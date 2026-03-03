@@ -1,0 +1,9 @@
+cd WebCalculator
+docker build . -t webcalculator.specs
+docker network create mynet
+docker run -d --name webcalc --network mynet -p 80:80 webcalculator
+
+cd ../WebCalculator.Spec
+docker build . -t webcalculator.specs
+docker run -it --name webcalc.spec --network mynet --rm webcalculator.specs
+./bin/Debug/net10.0/WebCalculator.Specs
