@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="Wpf2Calculators.Specs/Wpf2Calculators.Specs.csproj" />
   <Project Path="WpfCalculator.Specs\WpfCalculator.Specs.csproj" />
   <Project Path="WpfCalculator\WpfCalculator.csproj" />
 </Solution>
