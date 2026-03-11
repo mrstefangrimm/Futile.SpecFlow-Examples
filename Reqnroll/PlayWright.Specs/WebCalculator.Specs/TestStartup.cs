@@ -8,7 +8,7 @@ using ReqnrollTestProject.Services;
 using ReqnrollTestProject.Settings;
 using ReqnrollTestProject.Steps;
 
-namespace ReqnrollTestProject;
+namespace WebCalculator.Specs;
 
 public static class TestStartup
 {
@@ -72,7 +72,7 @@ public static class TestStartup
 
     private static void RegisterPagesHandler(this ContainerBuilder builder)
     {
-        builder.RegisterType<CalculatorService>().As<ICalculatorPagesService>().InstancePerLifetimeScope();
+        builder.RegisterType<CalculatorService>().As<ICalculatorService>().InstancePerLifetimeScope();
     }
 
     private static void RegisterPageDependencyService(this ContainerBuilder builder)

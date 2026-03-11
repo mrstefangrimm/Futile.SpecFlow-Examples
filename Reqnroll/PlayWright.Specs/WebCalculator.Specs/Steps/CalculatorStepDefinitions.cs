@@ -5,9 +5,9 @@ using ReqnrollTestProject.Services;
 namespace ReqnrollTestProject.Steps;
 
 [Binding]
-public class CalculatorStepDefinitions(ICalculatorPagesService pageService)
+public class CalculatorStepDefinitions(ICalculatorService pageService)
 {
-  private readonly ICalculatorPagesService _pageService = pageService;
+  private readonly ICalculatorService _pageService = pageService;
 
   [Given("the first number is {int}")]
   public async Task GivenTheFirstNumberIs(int p0)

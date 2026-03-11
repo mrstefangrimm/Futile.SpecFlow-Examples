@@ -2,12 +2,12 @@
 
 namespace ReqnrollTestProject.Services;
 
-public interface ICalculatorPagesService
+public interface ICalculatorService
 {
     CalculatorPage MainPage { get; }
 }
 
-public class CalculatorService(CalculatorPage homePage) : ICalculatorPagesService
+public class CalculatorService(CalculatorPage homePage) : ICalculatorService
 {
     public CalculatorPage MainPage { get; } = homePage;
 }
