@@ -5,16 +5,20 @@ using FlaUI.Core.Tools;
 using FlaUI.UIA2;
 using FlaUI.UIA3;
 using Microsoft.Extensions.Options;
-using Wpf2Calculators.Specs.Settings;
 
-namespace Wpf2Calculators.Specs.Services;
+namespace Reqnroll.Amp;
 
-public class T2T<TIN, TOUT>(TOUT falue)
-{
-    public TOUT Value => falue;
-}
+//public class DriverPort<N, T> where T : new()
+//{
+//    public DriverPort()
+//    {
+//        Driver = new();
+//    }
 
-public class FlaUIDriver<T> : IDisposable
+//    public T Driver { get; }
+//}
+
+public class FlaUIDriverBase : IDisposable
 {
     private IOptions<AppSettings> _appSettings;
 
@@ -25,7 +29,7 @@ public class FlaUIDriver<T> : IDisposable
     private readonly Lazy<Window> _currentLazy;
     private bool _disposed;
 
-    public FlaUIDriver(IOptions<AppSettings> appSettings)
+    public FlaUIDriverBase(IOptions<AppSettings> appSettings)
     {
         _appSettings = appSettings;
         _currentLazy = new Lazy<Window>(LaunchProfile);
@@ -103,4 +107,15 @@ public class FlaUIDriver<T> : IDisposable
 
         _disposed = true;
     }
+}
+
+public class FlaUIDriver : FlaUIDriverBase
+{
+    public FlaUIDriver(IOptions<AppSettings> appSettings) : base(appSettings) { }
+
+}
+
+public class FlaUIDriver<N> : FlaUIDriverBase
+{
+    public FlaUIDriver(IOptions<AppSettings> appSettings) : base(appSettings) { }
 }

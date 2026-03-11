@@ -1,13 +1,13 @@
 ﻿using FlaUI.Core.AutomationElements;
-using Wpf2Calculators.Specs.Services;
+using Reqnroll.Amp;
 
 namespace Wpf2Calculators.Specs.CalculatorApp;
 
-public class CalculatorMainWindow<T>
+public class CalculatorMainWindow<N>
 {
-    private readonly FlaUIDriver<T> _driver;
+    private readonly FlaUIDriver<N> _driver;
 
-    public CalculatorMainWindow(FlaUIDriver<T> driver)
+    public CalculatorMainWindow(FlaUIDriver<N> driver)
     {
         _driver = driver;
     }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Options;
 using Reqnroll;
-using WpfCalculator.Specs.Settings;
+using Reqnroll.Amp;
 
 namespace WpfCalculator.Specs.Services;
 

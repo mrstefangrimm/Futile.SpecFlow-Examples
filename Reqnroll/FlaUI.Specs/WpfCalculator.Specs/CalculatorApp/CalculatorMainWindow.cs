@@ -1,5 +1,5 @@
 ﻿using FlaUI.Core.AutomationElements;
-using WpfCalculator.Specs.Services;
+using Reqnroll.Amp;
 
 namespace FlaUI.WpfCalculator.Specs.CalculatorApp;
 

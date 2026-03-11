@@ -1,27 +1,17 @@
-﻿using Wpf2Calculators.Specs.CalculatorApp;
+﻿using Reqnroll.Amp;
+using Wpf2Calculators.Specs.CalculatorApp;
 
 namespace Wpf2Calculators.Specs.Services;
 
-public interface ICalculatorService
+public interface ICalculatorService<N>
 {
     void SwitchProfile();
+    CalculatorMainWindow<N> MainWindow { get; }
 }
 
-public interface ICalculatorServiceOne : ICalculatorService
+public class CalculatorServiceOne(CalculatorMainWindow<Ports.One> mainWindow, FlaUIDriver<Ports.One> driver) : ICalculatorService<Ports.One>
 {
-    void SwitchProfile();
-    CalculatorMainWindow<ICalculatorServiceOne> MainWindow { get; }
-}
-
-public interface ICalculatorServiceTwo : ICalculatorService
-{
-    void SwitchProfile();
-    CalculatorMainWindow<ICalculatorServiceTwo> MainWindow { get; }
-}
-
-public class CalculatorServiceOne(CalculatorMainWindow<ICalculatorServiceOne> mainWindow, FlaUIDriver<ICalculatorServiceTwo> driver) : ICalculatorServiceOne
-{
-    public CalculatorMainWindow<ICalculatorServiceOne> MainWindow { get; } = mainWindow;
+    public CalculatorMainWindow<Ports.One> MainWindow { get; } = mainWindow;
 
     public void SwitchProfile()
     {
@@ -29,9 +19,9 @@ public class CalculatorServiceOne(CalculatorMainWindow<ICalculatorServiceOne> ma
     }
 }
 
-public class CalculatorServiceTwo(CalculatorMainWindow<ICalculatorServiceTwo> mainWindow, FlaUIDriver<ICalculatorServiceTwo> driver) : ICalculatorServiceTwo
+public class CalculatorServiceTwo(CalculatorMainWindow<Ports.Two> mainWindow, FlaUIDriver<Ports.Two> driver) : ICalculatorService<Ports.Two>
 {
-    public CalculatorMainWindow<ICalculatorServiceTwo> MainWindow { get; } = mainWindow;
+    public CalculatorMainWindow<Ports.Two> MainWindow { get; } = mainWindow;
 
     public void SwitchProfile()
     {

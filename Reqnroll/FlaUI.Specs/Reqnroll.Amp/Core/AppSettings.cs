@@ -1,4 +1,4 @@
-﻿namespace WpfCalculator.Specs.Settings;
+﻿namespace Reqnroll.Amp;
 
 public class AppSettings
 {

@@ -2,9 +2,9 @@
 using FlaUI.WpfCalculator.Specs.CalculatorApp;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
+using Reqnroll.Amp;
 using Reqnroll.Autofac;
 using WpfCalculator.Specs.Services;
-using WpfCalculator.Specs.Settings;
 using WpfCalculator.Specs.Steps;
 
 namespace WpfCalculator.Specs;
@@ -15,7 +15,6 @@ public static class TestStartup
     public static void CreateServices(ContainerBuilder builder)
     {
         builder.RegisterConfiguration();
-        //builder.RegisterPlaywright();
         builder.RegisterAppSettings();
         builder.RegisterPages();
         builder.RegisterPagesHandler();
