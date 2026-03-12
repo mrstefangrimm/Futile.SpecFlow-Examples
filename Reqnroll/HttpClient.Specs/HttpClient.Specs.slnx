@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="Reqnroll.Amp/Core/Reqnroll.Amp.Core.csproj" />
+  <Project Path="WeatherApi/WeatherApi.csproj" />
+  <Project Path="WeatherApi.Specs/WeatherApi.Specs.csproj" />
+</Solution>

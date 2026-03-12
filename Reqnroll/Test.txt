@@ -1,9 +1,29 @@
-cd WebCalculator
-docker build . -t webcalculator.specs
+Local
+-----
+
+
+
+Docker
+------
+
 docker network create mynet
+
+cd WeatherApi
+docker build . -t weatherapi
+docker run -d --name weatherapi --network mynet -p 8080:8080 weatherapi
+
+cd ../WebCalculator
+docker build . -t webcalculator
 docker run -d --name webcalc --network mynet -p 80:80 webcalculator
 
-cd ../WebCalculator.Spec
+cd ../HttpClient.Specs
+docker build . -t weatherapi.specs
+docker run -it --name weatherapi.specs --network mynet --rm weatherapi.specs
+./bin/Debug/net10.0/WeatherApi.Specs
+
+cd ../PlayWright.Specs
 docker build . -t webcalculator.specs
-docker run -it --name webcalc.spec --network mynet --rm webcalculator.specs
+docker run -it --name webcalc.specs --network mynet --rm webcalculator.specs
 ./bin/Debug/net10.0/WebCalculator.Specs
+
+

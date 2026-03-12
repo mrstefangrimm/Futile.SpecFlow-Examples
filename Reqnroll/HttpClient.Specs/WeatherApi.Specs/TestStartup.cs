@@ -3,17 +3,11 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Reqnroll.Amp;
 using Reqnroll.Autofac;
-using Wpf2Calculators.Specs.App;
-using Wpf2Calculators.Specs.Services;
-using Wpf2Calculators.Specs.Steps;
+using WeatherApi.Specs.App;
+using WeatherApi.Specs.Services;
+using WeatherApi.Specs.Steps;
 
-namespace Wpf2Calculators.Specs;
-
-public static class Ports
-{
-    public struct One { }
-    public struct Two { }
-}
+namespace WeatherApi.Specs;
 
 public static class TestStartup
 {
@@ -53,20 +47,17 @@ public static class TestStartup
             configuration.Bind(appSettings);
             return Options.Create(appSettings);
         }).As<IOptions<AppSettings>>();
-    }
+    }    
 
     private static void RegisterPages(this ContainerBuilder builder)
     {
-        builder.RegisterType<CalculatorMainWindow<Ports.One>>().AsSelf().InstancePerDependency();
-        builder.RegisterType<CalculatorMainWindow<Ports.Two>>().AsSelf().InstancePerDependency();
+        builder.RegisterType<WeatherApp>().AsSelf().InstancePerDependency();
     }
 
     private static void RegisterPagesHandler(this ContainerBuilder builder)
     {
-        builder.RegisterType<CalculatorServiceOne>().As<ICalculatorService<Ports.One>>().InstancePerLifetimeScope();
-        builder.RegisterType<CalculatorServiceTwo>().As<ICalculatorService<Ports.Two>>().InstancePerLifetimeScope();
-        builder.RegisterType<FlaUIDriver<Ports.One>>().AsSelf().InstancePerLifetimeScope();
-        builder.RegisterType<FlaUIDriver<Ports.Two>>().AsSelf().InstancePerLifetimeScope();
+        builder.RegisterType<WeatherService>().As<IWeatherService>().InstancePerLifetimeScope();
+        builder.RegisterType<HttpClientDriver>().AsSelf().InstancePerLifetimeScope();
     }
 
     private static void RegisterPageDependencyService(this ContainerBuilder builder)

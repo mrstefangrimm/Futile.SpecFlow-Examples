@@ -1,4 +1,4 @@
-﻿using FlaUI.WpfCalculator.Specs.CalculatorApp;
+﻿using WpfCalculator.Specs.App;
 
 namespace WpfCalculator.Specs.Services;
 

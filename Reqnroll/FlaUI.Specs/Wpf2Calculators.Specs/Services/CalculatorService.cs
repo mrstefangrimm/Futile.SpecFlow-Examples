@@ -1,5 +1,5 @@
 ﻿using Reqnroll.Amp;
-using Wpf2Calculators.Specs.CalculatorApp;
+using Wpf2Calculators.Specs.App;
 
 namespace Wpf2Calculators.Specs.Services;
 

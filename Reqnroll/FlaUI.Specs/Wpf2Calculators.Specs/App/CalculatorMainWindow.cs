@@ -1,7 +1,7 @@
 ﻿using FlaUI.Core.AutomationElements;
 using Reqnroll.Amp;
 
-namespace Wpf2Calculators.Specs.CalculatorApp;
+namespace Wpf2Calculators.Specs.App;
 
 public class CalculatorMainWindow<N>
 {

@@ -1,9 +1,9 @@
 ﻿using Autofac;
-using FlaUI.WpfCalculator.Specs.CalculatorApp;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Reqnroll.Amp;
 using Reqnroll.Autofac;
+using WpfCalculator.Specs.App;
 using WpfCalculator.Specs.Services;
 using WpfCalculator.Specs.Steps;
 
@@ -49,20 +49,6 @@ public static class TestStartup
         }).As<IOptions<AppSettings>>();
     }
 
-    //private static void RegisterPlaywright(this ContainerBuilder builder)
-    //{
-    //    builder.Register(async _ =>
-    //    {
-    //        var playwright = await Microsoft.Playwright.Playwright.CreateAsync().ConfigureAwait(false);
-    //        var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
-    //        {
-    //            Headless = true,
-    //            SlowMo = 200
-    //        }).ConfigureAwait(false);
-    //        return await browser.NewPageAsync().ConfigureAwait(false);
-    //    }).As<Task<IPage>>().InstancePerDependency();
-    //}
-
     private static void RegisterPages(this ContainerBuilder builder)
     {
         builder.RegisterType<CalculatorMainWindow>().AsSelf().InstancePerDependency();
@@ -71,12 +57,10 @@ public static class TestStartup
     private static void RegisterPagesHandler(this ContainerBuilder builder)
     {
         builder.RegisterType<CalculatorService>().As<ICalculatorService>().InstancePerLifetimeScope();
-        builder.RegisterType<CalculatorProxy>().AsSelf().InstancePerLifetimeScope();
         builder.RegisterType<FlaUIDriver>().AsSelf().InstancePerLifetimeScope();
     }
 
     private static void RegisterPageDependencyService(this ContainerBuilder builder)
     {
-        builder.RegisterType<PageDependencyService>().As<IPageDependencyService>().InstancePerLifetimeScope();
     }
 }
