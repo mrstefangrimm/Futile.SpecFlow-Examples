@@ -2,11 +2,11 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Microsoft.Playwright;
-using Reqnroll.Amp;
 using Reqnroll.Autofac;
+using ReqnrollTestProject.Pages;
 using ReqnrollTestProject.Services;
+using ReqnrollTestProject.Settings;
 using ReqnrollTestProject.Steps;
-using WebCalculator.Specs.App;
 
 namespace WebCalculator.Specs;
 
@@ -53,31 +53,30 @@ public static class TestStartup
 
     private static void RegisterPlaywright(this ContainerBuilder builder)
     {
-        //builder.Register(async _ =>
-        //{
-        //    var playwright = await Microsoft.Playwright.Playwright.CreateAsync().ConfigureAwait(false);
-        //    var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
-        //    {
-        //        Headless = true,
-        //        SlowMo = 200
-        //    }).ConfigureAwait(false);
-        //    return await browser.NewPageAsync().ConfigureAwait(false);
-        //}).As<Task<IPage>>().InstancePerDependency();
+        builder.Register(async _ =>
+        {
+            var playwright = await Microsoft.Playwright.Playwright.CreateAsync().ConfigureAwait(false);
+            var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
+            {
+                Headless = true,
+                SlowMo = 200
+            }).ConfigureAwait(false);
+            return await browser.NewPageAsync().ConfigureAwait(false);
+        }).As<Task<IPage>>().InstancePerDependency();
     }
 
     private static void RegisterPages(this ContainerBuilder builder)
     {
-        builder.RegisterType<HomePage>().AsSelf().InstancePerDependency();
+        builder.RegisterType<CalculatorPage>().AsSelf().InstancePerDependency();
     }
 
     private static void RegisterPagesHandler(this ContainerBuilder builder)
     {
         builder.RegisterType<CalculatorService>().As<ICalculatorService>().InstancePerLifetimeScope();
-        builder.RegisterType<PlayWrightDriver>().AsSelf().InstancePerLifetimeScope();
     }
 
     private static void RegisterPageDependencyService(this ContainerBuilder builder)
     {
-        //builder.RegisterType<PageDependencyService>().As<IPageDependencyService>().InstancePerLifetimeScope();
+        builder.RegisterType<PageDependencyService>().As<IPageDependencyService>().InstancePerLifetimeScope();
     }
 }

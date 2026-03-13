@@ -1,13 +1,13 @@
-﻿using ReqnrollTestProject.Pages;
+﻿using WebCalculator.Specs.App;
 
 namespace ReqnrollTestProject.Services;
 
 public interface ICalculatorService
 {
-    CalculatorPage MainPage { get; }
+    HomePage MainPage { get; }
 }
 
-public class CalculatorService(CalculatorPage homePage) : ICalculatorService
+public class CalculatorService(HomePage homePage) : ICalculatorService
 {
-    public CalculatorPage MainPage { get; } = homePage;
+    public HomePage MainPage { get; } = homePage;
 }
