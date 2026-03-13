@@ -32,12 +32,12 @@ public class CalculatorMainWindow<N>
         return ResultTextBox.Text;
     }
 
-    public TextBox FirstNumberTextBox => _driver.Current.FindFirstDescendant("TextBoxFirst").AsTextBox();
-    public TextBox SecondNumberTextBox => _driver.Current.FindFirstDescendant("TextBoxSecond").AsTextBox();
-    public TextBox ResultTextBox => _driver.Current.FindFirstDescendant("TextBoxResult").AsTextBox();
+    public TextBox FirstNumberTextBox => _driver.Stub.FindFirstDescendant("TextBoxFirst").AsTextBox();
+    public TextBox SecondNumberTextBox => _driver.Stub.FindFirstDescendant("TextBoxSecond").AsTextBox();
+    public TextBox ResultTextBox => _driver.Stub.FindFirstDescendant("TextBoxResult").AsTextBox();
 
-    public Button AddButton => _driver.Current.FindFirstDescendant("ButtonAdd").AsButton();
-    public Button SubtractButton => _driver.Current.FindFirstDescendant("ButtonSubtract").AsButton();
-    public Button MultiplyButton => _driver.Current.FindFirstDescendant("ButtonMultiply").AsButton();
-    public Button DivideButton => _driver.Current.FindFirstDescendant("ButtonDivide").AsButton();
+    public Button AddButton => _driver.Stub.FindFirstDescendant("ButtonAdd").AsButton();
+    public Button SubtractButton => _driver.Stub.FindFirstDescendant("ButtonSubtract").AsButton();
+    public Button MultiplyButton => _driver.Stub.FindFirstDescendant("ButtonMultiply").AsButton();
+    public Button DivideButton => _driver.Stub.FindFirstDescendant("ButtonDivide").AsButton();
 }

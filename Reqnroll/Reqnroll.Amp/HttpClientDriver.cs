@@ -2,37 +2,14 @@
 
 namespace Reqnroll.Amp;
 
-public class HttpClientDriverBase : IDisposable
+public class HttpClientDriverBase : AmpDriver<HttpClient>, IDisposable
 {
-    private IOptions<AppSettings> _appSettings;
-
     private HttpClient? _application;
-    private string? _launchProfileName;
-    private string? _launchProfileArguments;
-
-    private readonly Lazy<HttpClient> _currentLazy;
     private bool _disposed;
 
-    public HttpClientDriverBase(IOptions<AppSettings> appSettings)
-    {
-        _appSettings = appSettings;
-        _currentLazy = new Lazy<HttpClient>(LaunchProfile);
-    }
+    public HttpClientDriverBase(IOptions<AppSettings> appSettings) : base(appSettings) { }
 
-    public void SwitchProfile(string name, string? launchProfileArguments = null)
-    {
-        if (_currentLazy.IsValueCreated)
-        {
-            throw new InvalidOperationException("switch profile on launched application is not possible.");
-        }
-
-        _launchProfileName = name;
-        _launchProfileArguments = launchProfileArguments;
-    }
-
-    public HttpClient Current => _currentLazy.Value;
-
-    private HttpClient LaunchProfile()
+    protected override HttpClient LaunchProfile()
     {
         var apiSettings = _appSettings.Value.WebApi;
 
@@ -49,7 +26,7 @@ public class HttpClientDriverBase : IDisposable
         if (profile == null) { throw new InvalidOperationException($"Invalid profile with name {_launchProfileName}."); }
 
         _application = new HttpClient();
-        _application.BaseAddress = new Uri(_launchProfileArguments ?? profile.Url);
+        _application.BaseAddress = new Uri(_launchArguments ?? profile.Url);
 
         return _application;
     }

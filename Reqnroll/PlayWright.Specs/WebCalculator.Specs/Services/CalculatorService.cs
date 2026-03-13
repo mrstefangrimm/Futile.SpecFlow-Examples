@@ -1,6 +1,6 @@
 ﻿using WebCalculator.Specs.App;
 
-namespace ReqnrollTestProject.Services;
+namespace WebCalculator.Specs.Services;
 
 public interface ICalculatorService
 {

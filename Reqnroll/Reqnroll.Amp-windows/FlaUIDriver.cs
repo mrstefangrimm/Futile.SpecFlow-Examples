@@ -8,49 +8,16 @@ using Microsoft.Extensions.Options;
 
 namespace Reqnroll.Amp;
 
-//public class DriverPort<N, T> where T : new()
-//{
-//    public DriverPort()
-//    {
-//        Driver = new();
-//    }
-
-//    public T Driver { get; }
-//}
-
-public class FlaUIDriverBase : IDisposable
+public class FlaUIDriverBase : AmpDriver<Window>, IDisposable
 {
-    private IOptions<AppSettings> _appSettings;
-
     private Application? _application;
-    private string? _launchProfileName;
-    private string? _launchProfileArguments;
-
-    private readonly Lazy<Window> _currentLazy;
     private bool _disposed;
 
-    public FlaUIDriverBase(IOptions<AppSettings> appSettings)
-    {
-        _appSettings = appSettings;
-        _currentLazy = new Lazy<Window>(LaunchProfile);
-    }
+    public FlaUIDriverBase(IOptions<AppSettings> appSettings) : base(appSettings) { }
+    
+    public ConditionFactory Get => _lazyInstance.Value.Automation.ConditionFactory;
 
-    public void SwitchProfile(string name, string? launchProfileArguments = null)
-    {
-        if (_currentLazy.IsValueCreated)
-        {
-            throw new InvalidOperationException("switch profile on launched application is not possible.");
-        }
-
-        _launchProfileName = name;
-        _launchProfileArguments = launchProfileArguments;
-    }
-
-    public Window Current => _currentLazy.Value;
-
-    public ConditionFactory Get => _currentLazy.Value.Automation.ConditionFactory;
-
-    private Window LaunchProfile()
+    protected override Window LaunchProfile()
     {
         var flu = _appSettings.Value.FlaUi;
 
@@ -75,11 +42,11 @@ public class FlaUIDriverBase : IDisposable
 
         if (profile.Launch == LaunchCommand.Exe)
         {
-            _application = Application.Launch(profile.App, _launchProfileArguments ?? profile.Arguments);
+            _application = Application.Launch(profile.App, _launchArguments ?? profile.Arguments);
         }
         else if (profile.Launch == LaunchCommand.StoreApp)
         {
-            _application = Application.LaunchStoreApp(profile.App, _launchProfileArguments ?? profile.Arguments);
+            _application = Application.LaunchStoreApp(profile.App, _launchArguments ?? profile.Arguments);
         }
         else
         {
@@ -112,7 +79,6 @@ public class FlaUIDriverBase : IDisposable
 public class FlaUIDriver : FlaUIDriverBase
 {
     public FlaUIDriver(IOptions<AppSettings> appSettings) : base(appSettings) { }
-
 }
 
 public class FlaUIDriver<N> : FlaUIDriverBase

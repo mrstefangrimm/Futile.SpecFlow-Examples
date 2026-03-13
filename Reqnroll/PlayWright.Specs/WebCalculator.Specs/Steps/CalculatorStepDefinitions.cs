@@ -1,8 +1,8 @@
 using FluentAssertions;
 using Reqnroll;
-using ReqnrollTestProject.Services;
+using WebCalculator.Specs.Services;
 
-namespace ReqnrollTestProject.Steps;
+namespace WebCalculator.Specs.Steps;
 
 [Binding]
 public class CalculatorStepDefinitions(ICalculatorService pageService)

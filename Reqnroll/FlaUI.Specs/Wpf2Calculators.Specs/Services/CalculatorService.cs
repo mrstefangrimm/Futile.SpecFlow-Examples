@@ -15,7 +15,7 @@ public class CalculatorServiceOne(CalculatorMainWindow<Ports.One> mainWindow, Fl
 
     public void SwitchProfile()
     {
-        driver.SwitchProfile("Calculator One");
+        driver.SelectProfile("Calculator One");
     }
 }
 
@@ -25,6 +25,6 @@ public class CalculatorServiceTwo(CalculatorMainWindow<Ports.Two> mainWindow, Fl
 
     public void SwitchProfile()
     {
-        driver.SwitchProfile("Calculator Two");
+        driver.SelectProfile("Calculator Two");
     }
 }

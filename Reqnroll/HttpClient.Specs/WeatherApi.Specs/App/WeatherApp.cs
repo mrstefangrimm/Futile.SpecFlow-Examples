@@ -13,7 +13,7 @@ public class WeatherApp
         
     public async Task<string> GetResult()
     {
-        var response = await _driver.Current.GetAsync("");
+        var response = await _driver.Stub.GetAsync("");
         var content = await response.Content.ReadAsStringAsync();
         return content;
     }

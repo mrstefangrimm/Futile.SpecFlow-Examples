@@ -3,37 +3,14 @@ using Microsoft.Playwright;
 
 namespace Reqnroll.Amp;
 
-public class PlayWrightDriverBase : IAsyncDisposable
+public class PlayWrightDriverBase : AmpDriver<Task<IPage>>, IAsyncDisposable
 {
-    private IOptions<AppSettings> _appSettings;
-
     private IPage? _application;
-    private string? _launchProfileName;
-    private string? _launchProfileArguments;
-
-    private readonly Lazy<Task<IPage>> _currentLazy;
     private bool _disposed;
 
-    public PlayWrightDriverBase(IOptions<AppSettings> appSettings)
-    {
-        _appSettings = appSettings;
-        _currentLazy = new Lazy<Task<IPage>>(LaunchProfile);
-    }
+    public PlayWrightDriverBase(IOptions<AppSettings> appSettings) : base(appSettings) { }
 
-    public void SwitchProfile(string name, string? launchProfileArguments = null)
-    {
-        if (_currentLazy.IsValueCreated)
-        {
-            throw new InvalidOperationException("switch profile on launched application is not possible.");
-        }
-
-        _launchProfileName = name;
-        _launchProfileArguments = launchProfileArguments;
-    }
-
-    public IPage Current => _currentLazy.Value.Result;
-
-    private async Task<IPage> LaunchProfile()
+    protected override async Task<IPage> LaunchProfile()
     {
         var apiSettings = _appSettings.Value.Playwright;
 
@@ -60,10 +37,10 @@ public class PlayWrightDriverBase : IAsyncDisposable
 
         _application = await browser.NewPageAsync().ConfigureAwait(false);
 
-        await _application.GotoAsync(_launchProfileArguments ?? profile.Url);
+        await _application.GotoAsync(_launchArguments ?? profile.Url);
 
         return _application;
-    }  
+    }
 
     ValueTask IAsyncDisposable.DisposeAsync()
     {

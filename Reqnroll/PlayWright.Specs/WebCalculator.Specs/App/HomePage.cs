@@ -1,11 +1,7 @@
 using Reqnroll.Amp;
-using ReqnrollTestProject.Services;
 
 namespace WebCalculator.Specs.App;
 
-/// <summary>
-/// Calculator Page Object
-/// </summary>
 public class HomePage(PlayWrightDriver driver)
 {
   private readonly PlayWrightDriver _driver = driver;
@@ -22,17 +18,17 @@ public class HomePage(PlayWrightDriver driver)
 
   public async Task EnterFirstNumberAsync(string number)
   {
-    await _driver.Current.FillAsync(FirstNumberFieldSelector, number);
+    await (await _driver.Stub).FillAsync(FirstNumberFieldSelector, number);
   }
 
   public async Task EnterSecondNumberAsync(string number)
   {
-    await _driver.Current.FillAsync(SecondNumberFieldSelector, number);
+    await (await _driver.Stub).FillAsync(SecondNumberFieldSelector, number);
   }
 
   public async Task ClickAddAsync()
   {
-    await _driver.Current.ClickAsync(AddButtonSelector);
+    await (await _driver.Stub).ClickAsync(AddButtonSelector);
   }
 
   //public async Task EnsureCalculatorIsOpenAndResetAsync()
@@ -56,10 +52,10 @@ public class HomePage(PlayWrightDriver driver)
   public async Task<string?> WaitForNonEmptyResultAsync()
   {
     // Waits for the ResultLabelSelector value to be !== ""
-    await _driver.Current.WaitForFunctionAsync($"document.querySelector(\"{ResultLabelSelector}\").value !== \"\"");
+    await (await _driver.Stub).WaitForFunctionAsync($"document.querySelector(\"{ResultLabelSelector}\").value !== \"\"");
 
     // Gets the value attribute of the ResultLabelSelector
-    return await _driver.Current.InputValueAsync(ResultLabelSelector);
+    return await (await _driver.Stub).InputValueAsync(ResultLabelSelector);
   }
 
   //public async Task WaitForEmptyResultAsync()
