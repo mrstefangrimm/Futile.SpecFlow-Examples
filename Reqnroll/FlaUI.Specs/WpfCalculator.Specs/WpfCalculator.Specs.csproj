@@ -14,7 +14,7 @@
 		<PackageReference Include="FluentAssertions" Version="6.12.2" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.3" />
 		<PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.3" />
-		<PackageReference Include="Microsoft.Extensions.Options" Version="10.0.3" />
+		<PackageReference Include="Microsoft.Extensions.Options" Version="10.0.4" />
 		<PackageReference Include="Microsoft.NET.Test.Sdk" Version="18.3.0" />
 		<PackageReference Include="Reqnroll" Version="3.3.3" />
 		<PackageReference Include="Reqnroll.Autofac" Version="3.3.3" />
@@ -24,7 +24,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Reqnroll.Amp\Win\Reqnroll.Amp.Win.csproj" />
+		<ProjectReference Include="..\..\Reqnroll.Amp-windows\Reqnroll.Amp-windows.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

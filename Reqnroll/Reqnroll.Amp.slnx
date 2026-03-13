@@ -1,0 +1,17 @@
+<Solution>
+  <Folder Name="/Reqnroll.Amp/">
+    <Project Path="Reqnroll.Amp/Reqnroll.Amp.csproj" />
+    <Project Path="Reqnroll.Amp-windows/Reqnroll.Amp-windows.csproj" />
+  </Folder>
+  <Folder Name="/Reqnroll.Amp.Specs/">
+    <Project Path="FlaUI.Specs/WpfCalculator.Specs/WpfCalculator.Specs.csproj" />
+    <Project Path="FlaUI.Specs/Wpf2Calculators.Specs/Wpf2Calculators.Specs.csproj" />
+    <Project Path="PlayWright.Specs/WebCalculator.Specs/WebCalculator.Specs.csproj" />
+    <Project Path="HttpClient.Specs/WeatherApi.Specs/WeatherApi.Specs.csproj" />
+  </Folder>
+  <Folder Name="/SUT/">
+    <Project Path="WpfCalculator/WpfCalculator/WpfCalculator.csproj" />
+    <Project Path="WeatherApi/WeatherApi/WeatherApi.csproj" />
+    <Project Path="WebCalculator/WebCalculator/WebCalculator.csproj" />
+  </Folder>
+</Solution>

@@ -21,7 +21,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Reqnroll.Amp\Core\Reqnroll.Amp.Core.csproj" />
+	  <ProjectReference Include="..\..\Reqnroll.Amp\Reqnroll.Amp.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

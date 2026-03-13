@@ -1,7 +1,7 @@
 <Solution>
-  <Project Path="Reqnroll.Amp/Core/Reqnroll.Amp.Core.csproj" />
-  <Project Path="Reqnroll.Amp/Win/Reqnroll.Amp.Win.csproj" />
+  <Project Path="WpfCalculator.Specs/WpfCalculator.Specs.csproj" />
   <Project Path="Wpf2Calculators.Specs/Wpf2Calculators.Specs.csproj" />
-  <Project Path="WpfCalculator.Specs\WpfCalculator.Specs.csproj" />
-  <Project Path="WpfCalculator\WpfCalculator.csproj" />
+  <Project Path="../Reqnroll.Amp/Reqnroll.Amp.csproj" />
+  <Project Path="../Reqnroll.Amp-windows/Reqnroll.Amp-windows.csproj" />
+  <Project Path="../WpfCalculator/WpfCalculator/WpfCalculator.csproj" />
 </Solution>
