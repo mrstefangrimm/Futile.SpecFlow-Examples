@@ -24,7 +24,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\Reqnroll.Amp\Reqnroll.Amp.csproj" />
+		<ProjectReference Include="..\..\..\src\Reqnroll.Amp\Reqnroll.Amp.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

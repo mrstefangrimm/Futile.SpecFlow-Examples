@@ -8,6 +8,10 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<Compile Remove="Services\CalculatorProxy.cs" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="FlaUI.Core" Version="5.0.0" />
 		<PackageReference Include="FlaUI.UIA2" Version="5.0.0" />
 		<PackageReference Include="FlaUI.UIA3" Version="5.0.0" />
@@ -24,7 +28,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\Reqnroll.Amp-windows\Reqnroll.Amp-windows.csproj" />
+		<ProjectReference Include="..\..\..\src\Reqnroll.Amp-windows/Reqnroll.Amp-windows.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
