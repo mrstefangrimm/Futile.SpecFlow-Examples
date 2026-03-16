@@ -1,24 +1,24 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net10.0</TargetFramework>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
 
-  <PropertyGroup>
-    <Authors>mrstefangrimm</Authors>
-    <PackageId>Futile.Reqnroll.Amp</PackageId>
-    <PackageLicenseFile>LICENSE</PackageLicenseFile>
-    <PackageReadmeFile>README.md</PackageReadmeFile>
-    <Description>Additional classes for reqnroll.</Description>
-    <PackageProjectUrl>https://github.com/mrstefangrimm/</PackageProjectUrl>
-    <RepositoryUrl>https://github.com/mrstefangrimm/</RepositoryUrl>
-    <Version>0.0.1-prerelease10</Version>
-    <Company />
-  </PropertyGroup>
+    <PropertyGroup>
+        <Authors>mrstefangrimm</Authors>
+        <PackageId>Futile.Reqnroll.Amp</PackageId>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <Description>Additional classes for reqnroll.</Description>
+        <PackageProjectUrl>https://github.com/mrstefangrimm/</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/mrstefangrimm/</RepositoryUrl>
+        <Version>0.0.1-prerelease14</Version>
+        <Company />
+    </PropertyGroup>
 
-  <!--<PropertyGroup>
+    <!--<PropertyGroup>
     <TargetsForTfmSpecificBuildOutput>
       $(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage
     </TargetsForTfmSpecificBuildOutput>
@@ -26,82 +26,88 @@
       $(AllowedOutputExtensionsInPackageBuildOutputFolder);.xml;.pdb
     </AllowedOutputExtensionsInPackageBuildOutputFolder>
   </PropertyGroup>-->
-  
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Options" Version="10.0.4" />
-    <PackageReference Include="Microsoft.Playwright" Version="1.58.0" />
-  </ItemGroup>
 
-  <ItemGroup>
-    <None Include="..\..\LICENSE">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-    <None Include="..\..\README.md">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Autofac" Version="4.0.0" />
+        <PackageReference Include="Microsoft.Extensions.Configuration" Version="10.0.4" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.4" />
+        <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="10.0.4" />
+        <PackageReference Include="Microsoft.Extensions.Options" Version="10.0.4" />
+        <PackageReference Include="Microsoft.Playwright" Version="1.58.0" />
+    </ItemGroup>
 
-  <ItemGroup>
-    <Content Include="assemblies\Autofac.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\Cucumber.HtmlFormatter.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\Cucumber.Messages.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\CucumberExpressions.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\FluentAssertions.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\Gherkin.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\Microsoft.ApplicationInsights.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\Microsoft.Bcl.AsyncInterfaces.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\Microsoft.Extensions.Configuration.Abstractions.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\Microsoft.Extensions.Configuration.Binder.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\Microsoft.Extensions.Configuration.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\Microsoft.Extensions.Configuration.FileExtensions.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\Microsoft.Extensions.Configuration.Json.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\Microsoft.Extensions.DependencyInjection.Abstractions.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\Microsoft.Extensions.DependencyModel.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\Microsoft.Extensions.FileProviders.Abstractions.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\Microsoft.Extensions.FileProviders.Physical.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\Microsoft.Extensions.FileSystemGlobbing.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\Microsoft.Extensions.Options.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\Microsoft.Extensions.Primitives.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\Microsoft.Playwright.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\Microsoft.Playwright.TestAdapter.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\Microsoft.Playwright.Xunit.v3.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\Microsoft.Testing.Extensions.MSBuild.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\Microsoft.Testing.Extensions.Telemetry.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\Microsoft.Testing.Extensions.TrxReport.Abstractions.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\Microsoft.Testing.Platform.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\Microsoft.TestPlatform.CommunicationUtilities.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\Microsoft.TestPlatform.CoreUtilities.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\Microsoft.TestPlatform.CrossPlatEngine.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\Microsoft.TestPlatform.PlatformAbstractions.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\Microsoft.TestPlatform.Utilities.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\Microsoft.VisualStudio.CodeCoverage.Shim.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\Microsoft.VisualStudio.TestPlatform.Common.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\Microsoft.VisualStudio.TestPlatform.ObjectModel.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\Newtonsoft.Json.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\Reqnroll.Autofac.ReqnrollPlugin.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\Reqnroll.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\Reqnroll.Utils.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\Reqnroll.xUnit3.ReqnrollPlugin.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\System.Configuration.ConfigurationManager.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\System.Security.Cryptography.ProtectedData.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <!--<Content Include="assemblies\testhost.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+    <ItemGroup>
+        <None Include="..\..\LICENSE">
+            <Pack>True</Pack>
+            <PackagePath></PackagePath>
+        </None>
+        <None Include="..\..\README.md">
+            <Pack>True</Pack>
+            <PackagePath></PackagePath>
+        </None>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Content Include="assemblies\Autofac.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\Cucumber.HtmlFormatter.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\Cucumber.Messages.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\CucumberExpressions.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\FluentAssertions.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\Gherkin.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\Microsoft.ApplicationInsights.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\Microsoft.Bcl.AsyncInterfaces.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\Microsoft.Extensions.Configuration.Abstractions.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\Microsoft.Extensions.Configuration.Binder.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\Microsoft.Extensions.Configuration.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\Microsoft.Extensions.Configuration.FileExtensions.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\Microsoft.Extensions.Configuration.Json.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\Microsoft.Extensions.DependencyInjection.Abstractions.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\Microsoft.Extensions.DependencyModel.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\Microsoft.Extensions.FileProviders.Abstractions.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\Microsoft.Extensions.FileProviders.Physical.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\Microsoft.Extensions.FileSystemGlobbing.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\Microsoft.Extensions.Options.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\Microsoft.Extensions.Primitives.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\Microsoft.Playwright.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\Microsoft.Playwright.TestAdapter.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\Microsoft.Playwright.Xunit.v3.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\Microsoft.Testing.Extensions.MSBuild.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\Microsoft.Testing.Extensions.Telemetry.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\Microsoft.Testing.Extensions.TrxReport.Abstractions.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\Microsoft.Testing.Platform.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\Microsoft.TestPlatform.CommunicationUtilities.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\Microsoft.TestPlatform.CoreUtilities.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\Microsoft.TestPlatform.CrossPlatEngine.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\Microsoft.TestPlatform.PlatformAbstractions.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\Microsoft.TestPlatform.Utilities.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\Microsoft.VisualStudio.CodeCoverage.Shim.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\Microsoft.VisualStudio.TestPlatform.Common.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\Microsoft.VisualStudio.TestPlatform.ObjectModel.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\Newtonsoft.Json.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\Reqnroll.Autofac.ReqnrollPlugin.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\Reqnroll.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\Reqnroll.Utils.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\Reqnroll.xUnit3.ReqnrollPlugin.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\System.Configuration.ConfigurationManager.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\System.Security.Cryptography.ProtectedData.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <!--<Content Include="assemblies\testhost.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
     <Content Include="assemblies\testhost.exe" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />-->
-    <Content Include="assemblies\xunit.abstractions.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\xunit.v3.assert.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\xunit.v3.common.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\xunit.v3.core.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\xunit.v3.mtp-v1.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\xunit.v3.runner.common.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\xunit.v3.runner.inproc.console.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    <Content Include="assemblies\xunit.v3.runner.utility.netcore.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-  </ItemGroup>
+        <Content Include="assemblies\xunit.abstractions.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\xunit.v3.assert.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\xunit.v3.common.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\xunit.v3.core.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\xunit.v3.mtp-v1.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\xunit.v3.runner.common.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\xunit.v3.runner.inproc.console.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\xunit.v3.runner.utility.netcore.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
+    </ItemGroup>
 
-  <!--<Target DependsOnTargets="ResolveReferences" Name="CopyProjectReferencesToPackage">
+    <!--<Target DependsOnTargets="ResolveReferences" Name="CopyProjectReferencesToPackage">
     <ItemGroup>
       <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths->WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))" />
-      --><!--<BuildOutputInPackage Include="@(ReferenceCopyLocalPaths->WithMetadataValue('ReferenceSourceTarget', 'ProjectReference')->Replace('.dll', '.xml'))" />--><!--
+      -->
+    <!--<BuildOutputInPackage Include="@(ReferenceCopyLocalPaths->WithMetadataValue('ReferenceSourceTarget', 'ProjectReference')->Replace('.dll', '.xml'))" />-->
+    <!--
       <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths->WithMetadataValue('ReferenceSourceTarget', 'ProjectReference')->Replace('.dll', '.pdb'))" />
     </ItemGroup>
   </Target>-->

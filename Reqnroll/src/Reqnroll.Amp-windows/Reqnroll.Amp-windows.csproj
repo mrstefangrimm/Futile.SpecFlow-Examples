@@ -1,45 +1,62 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-	<PropertyGroup>
-		<TargetFramework>net10.0-windows</TargetFramework>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<Nullable>enable</Nullable>
-	</PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net10.0-windows</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
 
-	<PropertyGroup>
-		<Authors>mrstefangrimm</Authors>
-		<PackageLicenseFile>LICENSE</PackageLicenseFile>
-		<PackageReadmeFile>README.md</PackageReadmeFile>
-		<Description>Additional classes for reqnroll.</Description>
-		<PackageProjectUrl>https://github.com/mrstefangrimm/</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/mrstefangrimm/</RepositoryUrl>
-		<Version>0.0.1-prerelease01</Version>
-		<Company />
-	</PropertyGroup>
+    <PropertyGroup>
+        <Authors>mrstefangrimm</Authors>
+        <PackageId>Futile.Reqnroll.Amp-windows</PackageId>
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <Description>Additional classes for reqnroll.</Description>
+        <PackageProjectUrl>https://github.com/mrstefangrimm/</PackageProjectUrl>
+        <RepositoryUrl>https://github.com/mrstefangrimm/</RepositoryUrl>
+        <Version>0.0.1-prerelease14</Version>
+        <Company />
+    </PropertyGroup>
 
-	<ItemGroup>
-		<PackageReference Include="Microsoft.Extensions.Options" Version="10.0.4" />
-		<PackageReference Include="FlaUI.Core" Version="5.0.0" />
-		<PackageReference Include="FlaUI.UIA2" Version="5.0.0" />
-		<PackageReference Include="FlaUI.UIA3" Version="5.0.0" />
-	</ItemGroup>
+    <!--<PropertyGroup>
+    <TargetsForTfmSpecificBuildOutput>
+      $(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage
+    </TargetsForTfmSpecificBuildOutput>
+    <AllowedOutputExtensionsInPackageBuildOutputFolder>
+      $(AllowedOutputExtensionsInPackageBuildOutputFolder);.xml;.pdb
+    </AllowedOutputExtensionsInPackageBuildOutputFolder>
+  </PropertyGroup>-->
 
-	<ItemGroup>
-		<ProjectReference Include="..\Reqnroll.Amp\Reqnroll.Amp.csproj" />
-	</ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="Microsoft.Extensions.Options" Version="10.0.4" />
+        <PackageReference Include="FlaUI.Core" Version="5.0.0" />
+        <PackageReference Include="FlaUI.UIA2" Version="5.0.0" />
+        <PackageReference Include="FlaUI.UIA3" Version="5.0.0" />
+    </ItemGroup>
 
-	<ItemGroup>
-		<None Include="..\..\LICENSE">
-			<Pack>True</Pack>
-			<PackagePath></PackagePath>
-		</None>
-	</ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\Reqnroll.Amp\Reqnroll.Amp.csproj" />
+    </ItemGroup>
 
-	<ItemGroup>
-		<None Include="..\..\README.md">
-			<Pack>True</Pack>
-			<PackagePath></PackagePath>
-		</None>
-	</ItemGroup>
+    <ItemGroup>
+        <None Include="..\..\LICENSE">
+            <Pack>True</Pack>
+            <PackagePath></PackagePath>
+        </None>
+        <None Include="..\..\README.md">
+            <Pack>True</Pack>
+            <PackagePath></PackagePath>
+        </None>
+    </ItemGroup>
+
+    <!--<Target DependsOnTargets="ResolveReferences" Name="CopyProjectReferencesToPackage">
+    <ItemGroup>
+      <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths->WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))" />
+      -->
+    <!--<BuildOutputInPackage Include="@(ReferenceCopyLocalPaths->WithMetadataValue('ReferenceSourceTarget', 'ProjectReference')->Replace('.dll', '.xml'))" />-->
+    <!--
+      <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths->WithMetadataValue('ReferenceSourceTarget', 'ProjectReference')->Replace('.dll', '.pdb'))" />
+    </ItemGroup>
+  </Target>-->
 
 </Project>

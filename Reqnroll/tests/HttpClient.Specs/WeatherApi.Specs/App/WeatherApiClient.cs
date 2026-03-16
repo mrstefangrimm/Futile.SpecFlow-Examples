@@ -2,11 +2,11 @@
 
 namespace WeatherApi.Specs.App;
 
-public class WeatherApp
+public class WeatherApiClient
 {
     private readonly HttpClientDriver _driver;
 
-    public WeatherApp(HttpClientDriver driver)
+    public WeatherApiClient(HttpClientDriver driver)
     {
         _driver = driver;
     }

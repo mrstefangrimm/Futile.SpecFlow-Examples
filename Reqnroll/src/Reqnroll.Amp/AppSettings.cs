@@ -1,8 +1,7 @@
-﻿namespace Reqnroll.Amp;
+namespace Reqnroll.Amp;
 
 public class AppSettings
 {
-    public string UiUrl { get; set; } = null!;
     public PlaywrightConfiguration Playwright { get; set; } = null!;
     public WebApiConfiguration WebApi { get; set; } = null!;
     public FlaUIConfiguration FlaUi { get; set; } = null!;
@@ -37,7 +36,7 @@ public class FlaUIConfiguration
 public class FlaUISettings
 {
     public FlaUIA? UIA { get; set; } = null;
-    public ErrorCapturing Capturing { get;  set; } = null!;
+    public ErrorCapturing Capturing { get; set; } = null!;
 }
 
 public class FlaUIProfile
