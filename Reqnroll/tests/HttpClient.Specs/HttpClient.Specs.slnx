@@ -1,5 +1,7 @@
 <Solution>
+  <Project Path="WebCalculatorApi.Specs/WebCalculatorApi.Specs.csproj" />
+  <Project Path="../WebCalculatorApi/WebCalculatorApi.csproj" />
   <Project Path="WeatherApi.Specs/WeatherApi.Specs.csproj" />
-  <Project Path="../Reqnroll.Amp/Reqnroll.Amp.csproj" />
   <Project Path="../WeatherApi/WeatherApi.csproj" />
+  <Project Path="../Reqnroll.Amp/Reqnroll.Amp.csproj" />
 </Solution>

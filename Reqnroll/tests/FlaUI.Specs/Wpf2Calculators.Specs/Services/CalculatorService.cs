@@ -1,4 +1,4 @@
-﻿using Reqnroll.Amp;
+using Reqnroll.Amp;
 using Wpf2Calculators.Specs.App;
 
 namespace Wpf2Calculators.Specs.Services;
@@ -6,6 +6,7 @@ namespace Wpf2Calculators.Specs.Services;
 public interface ICalculatorService<N>
 {
     void SwitchProfile();
+
     CalculatorMainWindow<N> MainWindow { get; }
 }
 

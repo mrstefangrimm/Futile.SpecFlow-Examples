@@ -1,4 +1,4 @@
-﻿using WebCalculator.Specs.App;
+using WebCalculator.Specs.App;
 
 namespace WebCalculator.Specs.Services;
 

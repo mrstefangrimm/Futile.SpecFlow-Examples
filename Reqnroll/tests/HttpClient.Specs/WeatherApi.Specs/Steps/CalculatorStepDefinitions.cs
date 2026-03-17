@@ -5,10 +5,8 @@ using WeatherApi.Specs.Services;
 namespace WeatherApi.Specs.Steps;
 
 [Binding]
-public class CalculatorStepDefinitions(IWeatherService calculatorProxy)
+public class CalculatorStepDefinitions(WeatherService weatherService)
 {
-    private readonly IWeatherService _service = calculatorProxy;
-
     [Given("forecast from weather api")]
     public void GivenForecastFromWeatherApi()
     {
@@ -19,10 +17,10 @@ public class CalculatorStepDefinitions(IWeatherService calculatorProxy)
     {
     }
 
-    [Then("forcast is in lower letters")]
-    public async Task ThenForcastIsInLowerLetters()
+    [Then("forecast is in lower letters")]
+    public async Task ThenForecastIsInLowerLetters()
     {
-        var result = await _service.App.GetResult();
+        var result = await weatherService.App.GetResult();
         result.Should().NotBeNull();
     }
 }

@@ -1,11 +1,11 @@
 using Autofac;
 using Reqnroll.Amp;
 using Reqnroll.Autofac;
-using WeatherApi.Specs.App;
-using WeatherApi.Specs.Services;
-using WeatherApi.Specs.Steps;
+using WebCalculatorApi.Specs.App;
+using WebCalculatorApi.Specs.Services;
+using WebCalculatorApi.Specs.Steps;
 
-namespace WeatherApi.Specs;
+namespace WebCalculatorApi.Specs;
 
 public static class TestStartup
 {
@@ -16,8 +16,8 @@ public static class TestStartup
         builder.RegisterAppSettings();
 
         builder.RegisterType<CalculatorStepDefinitions>().InstancePerDependency();
-        builder.RegisterType<WeatherService>().AsSelf().InstancePerLifetimeScope();
-        builder.RegisterType<WeatherApiClient>().AsSelf().InstancePerDependency();
+        builder.RegisterType<CalculatorService>().AsSelf().InstancePerLifetimeScope();
+        builder.RegisterType<CalculatorApiClient>().AsSelf().InstancePerDependency();
         builder.RegisterType<HttpClientDriver>().AsSelf().InstancePerLifetimeScope();
     }
 }

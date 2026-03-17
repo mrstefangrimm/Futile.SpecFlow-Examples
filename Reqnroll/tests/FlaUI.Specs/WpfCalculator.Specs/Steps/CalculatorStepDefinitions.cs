@@ -6,36 +6,32 @@ using WpfCalculator.Specs.Services;
 namespace WpfCalculator.Specs.Steps;
 
 [Binding]
-public class CalculatorStepDefinitions(ICalculatorService service)
+public class CalculatorStepDefinitions(ICalculatorService calculatorService)
 {
-    private readonly ICalculatorService _service = service;
-
     [Given("the first number is {int}")]
     public void GivenTheFirstNumberIs(int p0)
     {
-        _service.MainWindow.EnterFirstNumber(p0.ToString());
+        calculatorService.MainWindow.EnterFirstNumber(p0.ToString());
     }
 
     [Given("the second number is {int}")]
     public void GivenTheSecondNumberIs(int p0)
     {
-        _service.MainWindow.EnterSecondNumber(p0.ToString());
+        calculatorService.MainWindow.EnterSecondNumber(p0.ToString());
     }
 
     [When("the two numbers are added")]
     public void WhenTheTwoNumbersAreAdded()
     {
-         _service.MainWindow.ClickAdd();
+        calculatorService.MainWindow.ClickAdd();
     }
 
     [Then("the result should be {int}")]
     public void ThenTheResultShouldBe(int p0)
     {
-        //delegate to Page Object
-        var actualResult = _service.MainWindow.GetResult();
+        var actualResult = calculatorService.MainWindow.GetResult();
         var actualInt = double.Parse(actualResult).ToInt();
 
         actualInt.Should().Be(p0);
     }
-
 }

@@ -36,11 +36,9 @@ public class CalculatorStepDefinitions(ICalculatorService<Ports.One> calculatorO
     [Then("the result should be {int}")]
     public void ThenTheResultShouldBe(int p0)
     {
-        //delegate to Page Object
         var actualResult = _calculatorOne.MainWindow.GetResult();
         var actualInt = double.Parse(actualResult).ToInt();
 
         actualInt.Should().Be(p0);
     }
-
 }
