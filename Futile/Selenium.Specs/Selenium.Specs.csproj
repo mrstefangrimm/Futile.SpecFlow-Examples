@@ -9,7 +9,6 @@
     <PackageReference Include="SpecFlow.xUnit" Version="3.9.74" />
     <PackageReference Include="System.Text.Json" Version="10.0.3" />
     <PackageReference Include="Futile.SpecFlow.Actions.Selenium" Version="0.1.350.9" />
-    <PackageReference Include="Futile.SpecFlow.Actions.Configuration" Version="0.1.350.9" />
     <PackageReference Include="xunit" Version="2.9.3" />
     <PackageReference Include="xunit.runner.visualstudio" Version="3.1.5">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

@@ -10,8 +10,9 @@ public sealed class CalculatorStepDefinitions {
   //Page Object for Calculator
   private readonly CalculatorPageObject _calculatorPageObject;
 
-  public CalculatorStepDefinitions(IBrowserInteractions browserInteractions) {
+  public CalculatorStepDefinitions(IBrowserInteractions browserInteractions, Calci2PO calci2PO) {
     _calculatorPageObject = new CalculatorPageObject(browserInteractions);
+        calci2PO.FuDo();
   }
 
   [Given("the first number is (.*)")]

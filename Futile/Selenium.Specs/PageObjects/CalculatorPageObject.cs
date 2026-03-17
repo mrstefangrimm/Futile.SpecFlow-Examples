@@ -3,6 +3,14 @@ using SpecFlow.Actions.Selenium;
 
 namespace Example.PageObjects;
 
+public class Calci2PO(IBrowserInteractions browserInteractions)
+{
+    public void FuDo()
+    {
+        browserInteractions.GoToUrl("");
+    }
+}
+
 /// <summary>
 /// Calculator Page Object
 /// </summary>

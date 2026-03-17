@@ -1,13 +1,13 @@
 using FlaUI.Core.AutomationElements;
 using Reqnroll.Amp;
 
-namespace WpfCalculator.Specs.App;
+namespace CalculatorComparison.Specs.Apps;
 
-public class CalculatorMainWindow
+public class WpfCalculatorMainWindow
 {
-    private readonly FlaUIDriver? _driver;
+    private readonly FlaUIDriver<Ports.Wpf>? _driver;
 
-    public CalculatorMainWindow(FlaUIDriver driver)
+    public WpfCalculatorMainWindow(FlaUIDriver<Ports.Wpf> driver)
     {
         _driver = driver ?? throw new ArgumentNullException(nameof(driver));
     }
