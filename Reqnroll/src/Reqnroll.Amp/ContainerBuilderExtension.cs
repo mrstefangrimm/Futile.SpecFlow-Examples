@@ -11,7 +11,7 @@ public static class ContainerBuilderExtension
         public void RegisterConfiguration()
         {
             var configuration = new ConfigurationBuilder()
-                .AddJsonFile("Settings/appsettings.json", false, true)
+                .AddJsonFile("reqnroll.ampsettings.json", false, true)
                 .Build();
 
             builder.RegisterInstance(configuration)
@@ -24,10 +24,10 @@ public static class ContainerBuilderExtension
             builder.Register(c =>
             {
                 var configuration = c.Resolve<IConfiguration>();
-                var appSettings = new AppSettings();
+                var appSettings = new AmpSettings();
                 configuration.Bind(appSettings);
                 return Options.Create(appSettings);
-            }).As<IOptions<AppSettings>>();
+            }).As<IOptions<AmpSettings>>();
         }
     }
 }

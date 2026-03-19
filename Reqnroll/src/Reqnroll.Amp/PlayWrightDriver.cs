@@ -1,15 +1,15 @@
-﻿using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Options;
 using Microsoft.Playwright;
 
 namespace Reqnroll.Amp;
 
-public class PlayWrightDriverBase : AmpDriver<Task<IPage>>, IAsyncDisposable
+public class PlayWrightDriverBase : AmpDriver<Task<IPage>>, IDisposable, IAsyncDisposable
 {
     private IPage? _application;
     private bool _disposed;
 
-    public PlayWrightDriverBase(IOptions<AppSettings> appSettings) : base(appSettings) { }
-
+    public PlayWrightDriverBase(IOptions<AmpSettings> appSettings) : base(appSettings) { }
+    
     protected override async Task<IPage> LaunchProfile()
     {
         var apiSettings = _appSettings.Value.Playwright;
@@ -42,31 +42,46 @@ public class PlayWrightDriverBase : AmpDriver<Task<IPage>>, IAsyncDisposable
         return _application;
     }
 
-    ValueTask IAsyncDisposable.DisposeAsync()
+    public void Dispose()
     {
         if (_disposed)
         {
-            return ValueTask.CompletedTask;
+            return;
         }
 
         if (_application != null && !_application.IsClosed)
         {
-            _application.CloseAsync();
+            var closingTask = _application.CloseAsync();
+            closingTask.Wait(TimeSpan.FromSeconds(5));
             _application = null;
         }
 
         _disposed = true;
+    }
 
-        return ValueTask.CompletedTask;
+    public async ValueTask DisposeAsync()
+    {
+        if (_disposed)
+        {
+            return;
+        }
+
+        if (_application != null && !_application.IsClosed)
+        {
+            await _application.CloseAsync();
+            _application = null;
+        }
+
+        _disposed = true;
     }
 }
 
 public class PlayWrightDriver : PlayWrightDriverBase
 {
-    public PlayWrightDriver(IOptions<AppSettings> appSettings) : base(appSettings) { }
+    public PlayWrightDriver(IOptions<AmpSettings> appSettings) : base(appSettings) { }
 }
 
 public class PlayWrightDriver<N> : PlayWrightDriverBase
 {
-    public PlayWrightDriver(IOptions<AppSettings> appSettings) : base(appSettings) { }
+    public PlayWrightDriver(IOptions<AmpSettings> appSettings) : base(appSettings) { }
 }

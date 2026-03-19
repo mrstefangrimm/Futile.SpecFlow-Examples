@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Options;
+using Microsoft.Extensions.Options;
 
 namespace Reqnroll.Amp;
 
@@ -7,7 +7,7 @@ public class HttpClientDriverBase : AmpDriver<HttpClient>, IDisposable
     private HttpClient? _application;
     private bool _disposed;
 
-    public HttpClientDriverBase(IOptions<AppSettings> appSettings) : base(appSettings) { }
+    public HttpClientDriverBase(IOptions<AmpSettings> appSettings) : base(appSettings) { }
 
     protected override HttpClient LaunchProfile()
     {
@@ -50,10 +50,10 @@ public class HttpClientDriverBase : AmpDriver<HttpClient>, IDisposable
 
 public class HttpClientDriver : HttpClientDriverBase
 {
-    public HttpClientDriver(IOptions<AppSettings> appSettings) : base(appSettings) { }
+    public HttpClientDriver(IOptions<AmpSettings> appSettings) : base(appSettings) { }
 }
 
 public class HttpClientDriver<N> : HttpClientDriverBase
 {
-    public HttpClientDriver(IOptions<AppSettings> appSettings) : base(appSettings) { }
+    public HttpClientDriver(IOptions<AmpSettings> appSettings) : base(appSettings) { }
 }

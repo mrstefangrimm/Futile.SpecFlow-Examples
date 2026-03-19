@@ -24,7 +24,7 @@
         <None Update="reqnroll.json">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
-        <None Update="Settings\appsettings.json">
+        <None Update="reqnroll.ampsettings.json">
             <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
         </None>
     </ItemGroup>

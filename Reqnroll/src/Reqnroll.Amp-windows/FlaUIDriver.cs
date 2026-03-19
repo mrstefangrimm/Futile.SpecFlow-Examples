@@ -1,4 +1,4 @@
-﻿using FlaUI.Core;
+using FlaUI.Core;
 using FlaUI.Core.AutomationElements;
 using FlaUI.Core.Conditions;
 using FlaUI.Core.Tools;
@@ -13,7 +13,7 @@ public class FlaUIDriverBase : AmpDriver<Window>, IDisposable
     private Application? _application;
     private bool _disposed;
 
-    public FlaUIDriverBase(IOptions<AppSettings> appSettings) : base(appSettings) { }
+    public FlaUIDriverBase(IOptions<AmpSettings> appSettings) : base(appSettings) { }
     
     public ConditionFactory Get => _lazyInstance.Value.Automation.ConditionFactory;
 
@@ -78,10 +78,10 @@ public class FlaUIDriverBase : AmpDriver<Window>, IDisposable
 
 public class FlaUIDriver : FlaUIDriverBase
 {
-    public FlaUIDriver(IOptions<AppSettings> appSettings) : base(appSettings) { }
+    public FlaUIDriver(IOptions<AmpSettings> appSettings) : base(appSettings) { }
 }
 
 public class FlaUIDriver<N> : FlaUIDriverBase
 {
-    public FlaUIDriver(IOptions<AppSettings> appSettings) : base(appSettings) { }
+    public FlaUIDriver(IOptions<AmpSettings> appSettings) : base(appSettings) { }
 }

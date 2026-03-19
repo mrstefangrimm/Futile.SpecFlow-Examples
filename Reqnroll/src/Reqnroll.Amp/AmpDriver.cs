@@ -4,12 +4,12 @@ namespace Reqnroll.Amp;
 
 public abstract class AmpDriver<T>
 {
-    protected IOptions<AppSettings> _appSettings;
+    protected IOptions<AmpSettings> _appSettings;
     protected string? _launchProfileName;
     protected string? _launchArguments;
     protected Lazy<T> _lazyInstance;
 
-    public AmpDriver(IOptions<AppSettings> appSettings)
+    public AmpDriver(IOptions<AmpSettings> appSettings)
     {
         _appSettings = appSettings;
         _lazyInstance = new Lazy<T>(LaunchProfile);
