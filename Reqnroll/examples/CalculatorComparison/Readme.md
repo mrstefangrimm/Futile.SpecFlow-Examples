@@ -6,5 +6,3 @@ Requires:
  - Windows
  - Chrome browser
  - Internet
- - Docker
-
