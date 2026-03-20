@@ -3,6 +3,8 @@
     <File Path=".editorconfig" />
     <File Path="../../LICENSE" />
     <File Path="Readme.md" />
+    <File Path="reqnroll.json" />
+    <File Path="reqnroll.ampsettings.json" />
   </Folder>
   <Project Path="CalculatorComparison.Specs/CalculatorComparison.Specs.csproj" />
 </Solution>

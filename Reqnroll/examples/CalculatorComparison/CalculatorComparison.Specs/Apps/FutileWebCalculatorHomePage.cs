@@ -2,9 +2,9 @@ using Reqnroll.Amp;
 
 namespace CalculatorComparison.Specs.Apps;
 
-public class FutileWebCalculatorHomePage(PlayWrightDriver<Ports.Futile> driver)
+public class FutileWebCalculatorHomePage(PlayWrightDriver<Profile.Futile> driver)
 {
-    private readonly PlayWrightDriver<Ports.Futile> _driver = driver;
+    private readonly PlayWrightDriver<Profile.Futile> _driver = driver;
 
     // TODO: Cleanup
     // The page URL

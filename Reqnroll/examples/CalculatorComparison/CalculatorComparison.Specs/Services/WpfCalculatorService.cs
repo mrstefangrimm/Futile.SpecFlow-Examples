@@ -3,7 +3,7 @@ using Reqnroll.Amp;
 
 namespace CalculatorComparison.Specs.Services;
 
-public class WpfCalculatorService(WpfCalculatorMainWindow mainWindow, FlaUIDriver<Ports.Wpf> driver)
+public class WpfCalculatorService(WpfCalculatorMainWindow mainWindow, FlaUIDriver<Profile.Wpf> driver)
 {
     public WpfCalculatorMainWindow MainWindow { get; } = mainWindow;
 

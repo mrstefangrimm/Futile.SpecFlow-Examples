@@ -6,10 +6,10 @@ namespace CalculatorComparison.Specs.Apps;
 
 public class StoreAppCalculatorMainWindow
 {
-    private readonly FlaUIDriver<Ports.Windows>? _driver;
+    private readonly FlaUIDriver<Profile.Windows>? _driver;
     private readonly Lazy<IDictionary<char, Button>> _numbersLazy;
 
-    public StoreAppCalculatorMainWindow(FlaUIDriver<Ports.Windows> driver)
+    public StoreAppCalculatorMainWindow(FlaUIDriver<Profile.Windows> driver)
     {
         _driver = driver ?? throw new ArgumentNullException(nameof(driver));
         _numbersLazy = new Lazy<IDictionary<char, Button>>(LoadNumbers);

@@ -3,7 +3,7 @@ using Reqnroll.Amp;
 
 namespace CalculatorComparison.Specs.Services;
 
-public class WebCalculatorService(WebCalculatorHomePage homePage, PlayWrightDriver<Ports.Web> driver)
+public class WebCalculatorService(WebCalculatorHomePage homePage, PlayWrightDriver<Profile.Web> driver)
 {
     public WebCalculatorHomePage MainPage { get; } = homePage;
 

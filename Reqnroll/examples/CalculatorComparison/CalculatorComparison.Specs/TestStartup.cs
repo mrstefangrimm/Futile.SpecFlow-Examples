@@ -7,7 +7,7 @@ using Reqnroll.Autofac;
 
 namespace CalculatorComparison.Specs;
 
-public static class Ports
+public static class Profile
 {
     public struct Wpf { };
     public struct Windows { };
@@ -41,27 +41,27 @@ public static class TestStartup
     {
         builder.RegisterType<WpfCalculatorService>().AsSelf().InstancePerLifetimeScope();
         builder.RegisterType<WpfCalculatorMainWindow>().AsSelf().InstancePerDependency();
-        builder.RegisterType<FlaUIDriver<Ports.Wpf>>().AsSelf().InstancePerLifetimeScope();
+        builder.RegisterType<FlaUIDriver<Profile.Wpf>>().AsSelf().InstancePerLifetimeScope();
     }
 
     private static void RegisterStoreAppCalculator(this ContainerBuilder builder)
     {
         builder.RegisterType<StoreAppCalculatorService>().AsSelf().InstancePerLifetimeScope();
         builder.RegisterType<StoreAppCalculatorMainWindow>().AsSelf().InstancePerDependency();
-        builder.RegisterType<FlaUIDriver<Ports.Windows>>().AsSelf().InstancePerLifetimeScope();
+        builder.RegisterType<FlaUIDriver<Profile.Windows>>().AsSelf().InstancePerLifetimeScope();
     }
 
     private static void RegisterFutileCalculator(this ContainerBuilder builder)
     {
         builder.RegisterType<FutileWebCalculatorService>().AsSelf().InstancePerLifetimeScope();
         builder.RegisterType<FutileWebCalculatorHomePage>().AsSelf().InstancePerDependency();
-        builder.RegisterType<PlayWrightDriver<Ports.Futile>>().AsSelf().InstancePerLifetimeScope();
+        builder.RegisterType<PlayWrightDriver<Profile.Futile>>().AsSelf().InstancePerLifetimeScope();
     }
 
     private static void RegisterWebCalculator(this ContainerBuilder builder)
     {
         builder.RegisterType<WebCalculatorService>().AsSelf().InstancePerLifetimeScope();
         builder.RegisterType<WebCalculatorHomePage>().AsSelf().InstancePerDependency();
-        builder.RegisterType<PlayWrightDriver<Ports.Web>>().AsSelf().InstancePerLifetimeScope();
+        builder.RegisterType<PlayWrightDriver<Profile.Web>>().AsSelf().InstancePerLifetimeScope();
     }
 }

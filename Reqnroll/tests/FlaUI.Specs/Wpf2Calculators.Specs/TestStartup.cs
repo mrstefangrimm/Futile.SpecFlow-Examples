@@ -7,7 +7,7 @@ using Wpf2Calculators.Specs.Steps;
 
 namespace Wpf2Calculators.Specs;
 
-public static class Ports
+public static class Profile
 {
     public struct One { }
     public struct Two { }
@@ -22,11 +22,11 @@ public static class TestStartup
         builder.RegisterAppSettings();
 
         builder.RegisterType<CalculatorStepDefinitions>().InstancePerDependency();
-        builder.RegisterType<CalculatorServiceOne>().As<ICalculatorService<Ports.One>>().InstancePerLifetimeScope();
-        builder.RegisterType<CalculatorServiceTwo>().As<ICalculatorService<Ports.Two>>().InstancePerLifetimeScope();
-        builder.RegisterType<CalculatorMainWindow<Ports.One>>().AsSelf().InstancePerDependency();
-        builder.RegisterType<CalculatorMainWindow<Ports.Two>>().AsSelf().InstancePerDependency();
-        builder.RegisterType<FlaUIDriver<Ports.One>>().AsSelf().InstancePerLifetimeScope();
-        builder.RegisterType<FlaUIDriver<Ports.Two>>().AsSelf().InstancePerLifetimeScope();
+        builder.RegisterType<CalculatorServiceOne>().As<ICalculatorService<Profile.One>>().InstancePerLifetimeScope();
+        builder.RegisterType<CalculatorServiceTwo>().As<ICalculatorService<Profile.Two>>().InstancePerLifetimeScope();
+        builder.RegisterType<CalculatorMainWindow<Profile.One>>().AsSelf().InstancePerDependency();
+        builder.RegisterType<CalculatorMainWindow<Profile.Two>>().AsSelf().InstancePerDependency();
+        builder.RegisterType<FlaUIDriver<Profile.One>>().AsSelf().InstancePerLifetimeScope();
+        builder.RegisterType<FlaUIDriver<Profile.Two>>().AsSelf().InstancePerLifetimeScope();
     }
 }

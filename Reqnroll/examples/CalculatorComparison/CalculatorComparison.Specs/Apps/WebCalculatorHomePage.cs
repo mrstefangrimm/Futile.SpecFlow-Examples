@@ -4,14 +4,14 @@ namespace CalculatorComparison.Specs.Apps;
 
 public class WebCalculatorHomePage
 {
-    private readonly PlayWrightDriver<Ports.Web> _driver;
+    private readonly PlayWrightDriver<Profile.Web> _driver;
     private readonly Lazy<IDictionary<char, string>> _numbersLazy;
 
     private static string AddSelector => "#plus";
     private static string EqualSelector => "#equal";
     private static string ResultSelector => "#result";
 
-    public WebCalculatorHomePage(PlayWrightDriver<Ports.Web> driver)
+    public WebCalculatorHomePage(PlayWrightDriver<Profile.Web> driver)
     {
         _driver = driver ?? throw new ArgumentNullException(nameof(driver));
         _numbersLazy = new Lazy<IDictionary<char, string>>(LoadNumbers);

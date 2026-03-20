@@ -6,10 +6,10 @@ using Wpf2Calculators.Specs.Services;
 namespace Wpf2Calculators.Specs.Steps;
 
 [Binding]
-public class CalculatorStepDefinitions(ICalculatorService<Ports.One> calculatorOne, ICalculatorService<Ports.Two> calculatorTwo)
+public class CalculatorStepDefinitions(ICalculatorService<Profile.One> calculatorOne, ICalculatorService<Profile.Two> calculatorTwo)
 {
-    private readonly ICalculatorService<Ports.One> _calculatorOne = calculatorOne;
-    private readonly ICalculatorService<Ports.Two> _calculatorTwo = calculatorTwo;
+    private readonly ICalculatorService<Profile.One> _calculatorOne = calculatorOne;
+    private readonly ICalculatorService<Profile.Two> _calculatorTwo = calculatorTwo;
 
     [Given("the first number is {int}")]
     public void GivenTheFirstNumberIs(int p0)

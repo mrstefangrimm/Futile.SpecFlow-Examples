@@ -10,9 +10,9 @@ public interface ICalculatorService<N>
     CalculatorMainWindow<N> MainWindow { get; }
 }
 
-public class CalculatorServiceOne(CalculatorMainWindow<Ports.One> mainWindow, FlaUIDriver<Ports.One> driver) : ICalculatorService<Ports.One>
+public class CalculatorServiceOne(CalculatorMainWindow<Profile.One> mainWindow, FlaUIDriver<Profile.One> driver) : ICalculatorService<Profile.One>
 {
-    public CalculatorMainWindow<Ports.One> MainWindow { get; } = mainWindow;
+    public CalculatorMainWindow<Profile.One> MainWindow { get; } = mainWindow;
 
     public void SwitchProfile()
     {
@@ -20,9 +20,9 @@ public class CalculatorServiceOne(CalculatorMainWindow<Ports.One> mainWindow, Fl
     }
 }
 
-public class CalculatorServiceTwo(CalculatorMainWindow<Ports.Two> mainWindow, FlaUIDriver<Ports.Two> driver) : ICalculatorService<Ports.Two>
+public class CalculatorServiceTwo(CalculatorMainWindow<Profile.Two> mainWindow, FlaUIDriver<Profile.Two> driver) : ICalculatorService<Profile.Two>
 {
-    public CalculatorMainWindow<Ports.Two> MainWindow { get; } = mainWindow;
+    public CalculatorMainWindow<Profile.Two> MainWindow { get; } = mainWindow;
 
     public void SwitchProfile()
     {
