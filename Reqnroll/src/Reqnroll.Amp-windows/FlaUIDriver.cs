@@ -14,8 +14,21 @@ public class FlaUIDriverBase : AmpDriver<Window>, IDisposable
     private bool _disposed;
 
     public FlaUIDriverBase(IOptions<AmpSettings> appSettings) : base(appSettings) { }
-    
+
+    ~FlaUIDriverBase()
+    {
+        Dispose(false);
+    }
+
     public ConditionFactory Get => _lazyInstance.Value.Automation.ConditionFactory;
+    public Window[] Stubs
+    {
+        get
+        {
+            var automation = _lazyInstance.Value.Automation;
+            return _application!.GetAllTopLevelWindows(automation);
+        }
+    }
 
     protected override Window LaunchProfile()
     {
@@ -53,12 +66,18 @@ public class FlaUIDriverBase : AmpDriver<Window>, IDisposable
             throw new InvalidOperationException();
         }
 
-        return _application.GetMainWindow(automation);
+        return _application!.GetMainWindow(automation)!;
     }
 
     public void Dispose()
     {
-        if (_disposed)
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (_disposed || !disposing)
         {
             return;
         }
@@ -76,12 +95,12 @@ public class FlaUIDriverBase : AmpDriver<Window>, IDisposable
     }
 }
 
-public class FlaUIDriver : FlaUIDriverBase
+public sealed class FlaUIDriver : FlaUIDriverBase
 {
     public FlaUIDriver(IOptions<AmpSettings> appSettings) : base(appSettings) { }
 }
 
-public class FlaUIDriver<N> : FlaUIDriverBase
+public sealed class FlaUIDriver<N> : FlaUIDriverBase
 {
     public FlaUIDriver(IOptions<AmpSettings> appSettings) : base(appSettings) { }
 }

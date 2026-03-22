@@ -7,6 +7,6 @@ Features:
 - Class for Windows applications based on FlaUI (reference package: Futile.Reqnroll.Amp-windows)
 - Class for Web applications based on PlayWright
 - Class for Web Apis using HttpClient
-- Test profiles in `appsettings.json` which can be selected at runtime
-- Support of multiple applications under test
+- Test profiles in `reqnroll.ampsettings.json` which can be selected at runtime
+- Supports multiple applications under test
 

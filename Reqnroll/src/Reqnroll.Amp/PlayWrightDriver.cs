@@ -9,7 +9,12 @@ public class PlayWrightDriverBase : AmpDriver<Task<IPage>>, IDisposable, IAsyncD
     private bool _disposed;
 
     public PlayWrightDriverBase(IOptions<AmpSettings> appSettings) : base(appSettings) { }
-    
+
+    ~PlayWrightDriverBase()
+    {
+        Dispose(false);
+    }
+
     protected override async Task<IPage> LaunchProfile()
     {
         var apiSettings = _appSettings.Value.Playwright;
@@ -44,19 +49,8 @@ public class PlayWrightDriverBase : AmpDriver<Task<IPage>>, IDisposable, IAsyncD
 
     public void Dispose()
     {
-        if (_disposed)
-        {
-            return;
-        }
-
-        if (_application != null && !_application.IsClosed)
-        {
-            var closingTask = _application.CloseAsync();
-            closingTask.Wait(TimeSpan.FromSeconds(5));
-            _application = null;
-        }
-
-        _disposed = true;
+        Dispose(true);
+        GC.SuppressFinalize(this);
     }
 
     public async ValueTask DisposeAsync()
@@ -74,14 +68,31 @@ public class PlayWrightDriverBase : AmpDriver<Task<IPage>>, IDisposable, IAsyncD
 
         _disposed = true;
     }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (_disposed || !disposing)
+        {
+            return;
+        }
+
+        if (_application != null && !_application.IsClosed)
+        {
+            var closingTask = _application.CloseAsync();
+            closingTask.Wait(TimeSpan.FromSeconds(5));
+            _application = null;
+        }
+
+        _disposed = true;
+    }
 }
 
-public class PlayWrightDriver : PlayWrightDriverBase
+public sealed class PlayWrightDriver : PlayWrightDriverBase
 {
     public PlayWrightDriver(IOptions<AmpSettings> appSettings) : base(appSettings) { }
 }
 
-public class PlayWrightDriver<N> : PlayWrightDriverBase
+public sealed class PlayWrightDriver<N> : PlayWrightDriverBase
 {
     public PlayWrightDriver(IOptions<AmpSettings> appSettings) : base(appSettings) { }
 }
