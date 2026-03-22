@@ -6,7 +6,7 @@ namespace CalculatorComparison.Specs.Apps;
 
 public class StoreAppCalculatorMainWindow
 {
-    private readonly FlaUIDriver<Profile.Windows>? _driver;
+    private readonly FlaUIDriver<Profile.Windows> _driver;
     private readonly Lazy<IDictionary<char, Button>> _numbersLazy;
 
     public StoreAppCalculatorMainWindow(FlaUIDriver<Profile.Windows> driver)

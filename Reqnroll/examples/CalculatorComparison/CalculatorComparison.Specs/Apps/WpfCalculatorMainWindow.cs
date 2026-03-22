@@ -5,7 +5,7 @@ namespace CalculatorComparison.Specs.Apps;
 
 public class WpfCalculatorMainWindow
 {
-    private readonly FlaUIDriver<Profile.Wpf>? _driver;
+    private readonly FlaUIDriver<Profile.Wpf> _driver;
 
     public WpfCalculatorMainWindow(FlaUIDriver<Profile.Wpf> driver)
     {
