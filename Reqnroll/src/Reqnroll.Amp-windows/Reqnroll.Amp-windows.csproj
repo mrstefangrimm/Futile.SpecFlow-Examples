@@ -14,9 +14,9 @@
         <Description>Additional classes for reqnroll.</Description>
         <PackageProjectUrl>https://github.com/mrstefangrimm/</PackageProjectUrl>
         <RepositoryUrl>https://github.com/mrstefangrimm/</RepositoryUrl>
-        <Version>0.0.1-prerelease16</Version>
+        <Version>0.0.1-prerelease21</Version>
         <Company />
-        <GenerateDocumentationFile>True</GenerateDocumentationFile>
+        <!--<GenerateDocumentationFile>True</GenerateDocumentationFile>-->
     </PropertyGroup>
 
     <!--<PropertyGroup>
@@ -33,10 +33,13 @@
         <PackageReference Include="FlaUI.Core" Version="5.0.0" />
         <PackageReference Include="FlaUI.UIA2" Version="5.0.0" />
         <PackageReference Include="FlaUI.UIA3" Version="5.0.0" />
+        <!--<PackageReference Include="System.Diagnostics.PerformanceCounter"  Pack="true" PackagePath="lib\net10.0"  Version="8.0.1" />-->
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\Reqnroll.Amp\Reqnroll.Amp.csproj" />
+        <ProjectReference Include="..\Reqnroll.Amp\Reqnroll.Amp.csproj">
+            <IncludeInPackage>true</IncludeInPackage>
+        </ProjectReference>
     </ItemGroup>
 
     <ItemGroup>
@@ -50,11 +53,23 @@
         </None>
     </ItemGroup>
 
-    <ItemGroup>
-        <Content Include="assemblies\FlaUI.Core.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-        <Content Include="assemblies\FlaUI.UIA2.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-        <Content Include="assemblies\FlaUI.UIA3.dll" Pack="true" PackagePath="lib\net10.0" CopyToOutputDirectory="Always" />
-    </ItemGroup>
+    <!--<ItemGroup>
+        <Content Include="assemblies\FlaUI.Core.dll" Pack="true" PackagePath="lib\net10.0-windows7.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\FlaUI.UIA2.dll" Pack="true" PackagePath="lib\net10.0-windows7.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\FlaUI.UIA3.dll" Pack="true" PackagePath="lib\net10.0-windows7.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\System.Diagnostics.PerformanceCounter.dll" Pack="true" PackagePath="lib\net10.0-windows7.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\System.Drawing.Common.dll" Pack="true" PackagePath="lib\net10.0-windows7.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\System.Management.dll" Pack="true" PackagePath="lib\net10.0-windows7.0" CopyToOutputDirectory="Always" />
+        <Content Include="assemblies\System.Security.Permissions.dll" Pack="true" PackagePath="lib\net10.0-windows7.0" CopyToOutputDirectory="Always" />
+    </ItemGroup>-->
+
+    <!-- Copy dependencies -->
+    <!--<ItemGroup>
+        <None Include="assemblies\System.Diagnostics.PerformanceCounter.dll" PackagePath="lib\net10.0" Pack="true" CopyToOutputDirectory="Always" />
+        <None Include="assemblies\System.Drawing.Common.dll" PackagePath="lib\net10.0" Pack="true" CopyToOutputDirectory="Always" />
+        <None Include="assemblies\System.Management.dll" PackagePath="lib\net10.0" Pack="true" CopyToOutputDirectory="Always" />
+        <None Include="assemblies\System.Security.Permissions.dll" PackagePath="lib\net10.0" Pack="true" CopyToOutputDirectory="Always" />
+    </ItemGroup>-->
 
 
     <!--<Target DependsOnTargets="ResolveReferences" Name="CopyProjectReferencesToPackage">
