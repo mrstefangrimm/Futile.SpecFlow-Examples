@@ -20,3 +20,10 @@ Scenario: Add two numbers in slow motion
     And the second number is 70
     When the two numbers are added
     Then the result should be 120
+
+Scenario: Add two numbers using Windows chrome installation
+    Given profile is selected with installed chrome
+    And the first number is 50
+    And the second number is 70
+    When the two numbers are added
+    Then the result should be 120

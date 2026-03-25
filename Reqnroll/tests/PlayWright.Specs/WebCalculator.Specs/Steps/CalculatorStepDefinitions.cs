@@ -26,6 +26,12 @@ public class CalculatorStepDefinitions(ICalculatorService calculatorService, Pla
         driver.SelectProfile("Futile Calculator slowmo local url", arg);
     }
 
+    [Given("profile is selected with installed chrome")]
+    public void GivenProfileIsSelectedWithInstalledChrome()
+    {
+        driver.SelectProfile("Futile Calculator installed chrome");
+    }
+
     [Given("the first number is {int}")]
     public async Task GivenTheFirstNumberIs(int p0)
     {
