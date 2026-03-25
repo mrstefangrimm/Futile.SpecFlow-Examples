@@ -31,13 +31,12 @@ public class PlayWrightDriverBase : AmpDriver<Task<IPage>>, IDisposable, IAsyncD
         var profile = profiles[_launchProfileName];
         if (profile == null) { throw new InvalidOperationException($"Invalid profile with name {_launchProfileName}."); }
 
-
         var playwright = await Playwright.CreateAsync().ConfigureAwait(false);
         var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions
         {
-            Headless = false,
-            SlowMo = 200,
-            ExecutablePath = @"C:\Program Files\Google\Chrome\Application\chrome.exe"
+            Headless = profile.Headless,
+            SlowMo = profile.SlowMo,
+            ExecutablePath = profile.ChromeExecutablePath
         }).ConfigureAwait(false);
 
         _application = await browser.NewPageAsync().ConfigureAwait(false);

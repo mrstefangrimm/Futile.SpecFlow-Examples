@@ -1,12 +1,25 @@
 using FluentAssertions;
 using Reqnroll;
+using Reqnroll.Amp;
 using WebCalculator.Specs.Services;
 
 namespace WebCalculator.Specs.Steps;
 
 [Binding]
-public class CalculatorStepDefinitions(ICalculatorService calculatorService)
+public class CalculatorStepDefinitions(ICalculatorService calculatorService, PlayWrightDriver driver)
 {
+    [Given("headless profile is selected")]
+    public void GivenHeadlessProfieIsSelected()
+    {
+        driver.SelectProfile("Futile Calculator headless");
+    }
+
+    [Given("profile is selected with slowmo")]
+    public void GivenProfileIsSelectedWithSlowmo()
+    {
+        driver.SelectProfile("Futile Calculator slowmo");
+    }
+
     [Given("the first number is {int}")]
     public async Task GivenTheFirstNumberIs(int p0)
     {

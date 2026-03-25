@@ -1,4 +1,3 @@
-@Weather
 Feature: Weather
 
 Scenario: Get weather forecast

@@ -3,6 +3,10 @@
     <File Path=".editorconfig" />
     <File Path="LICENSE" />
     <File Path="Readme.md" />
+    <File Path="Build-AmpArtifiacts.ps1" />
+    <File Path="Build-AmpArtifiacts.sh" />
+    <File Path="Build-AmpArtifiacts-windows.ps1" />
+    <File Path="Build-AmpArtifiacts-windows.sh" />
   </Folder>
   <Folder Name="/Reqnroll.Amp/">
     <Project Path="src/Reqnroll.Amp/Reqnroll.Amp.csproj" />

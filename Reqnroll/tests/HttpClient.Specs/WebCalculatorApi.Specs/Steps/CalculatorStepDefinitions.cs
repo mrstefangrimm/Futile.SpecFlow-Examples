@@ -13,7 +13,6 @@ public class CalculatorStepDefinitions(CalculatorService calculatorService)
         calculatorService.FirstNumber = p0;
     }
 
-
     [Given("the second number is {int}")]
     public void GivenTheSecondNumberIs(int p0)
     {

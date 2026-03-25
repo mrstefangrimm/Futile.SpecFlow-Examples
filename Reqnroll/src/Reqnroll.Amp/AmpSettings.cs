@@ -15,6 +15,9 @@ public class PlaywrightConfiguration
 public class PlaywrightProfile
 {
     public string Url { get; set; } = null!;
+    public bool Headless { get; set; } = false;
+    public int SlowMo { get; set; } = 200;
+    public string ChromeExecutablePath { get; set; } = null!;
 }
 
 public class WebApiConfiguration

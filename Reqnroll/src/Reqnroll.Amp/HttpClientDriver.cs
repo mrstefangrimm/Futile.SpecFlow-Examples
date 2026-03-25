@@ -25,8 +25,10 @@ public class HttpClientDriverBase : AmpDriver<HttpClient>, IDisposable
         var profile = profiles[_launchProfileName];
         if (profile == null) { throw new InvalidOperationException($"Invalid profile with name {_launchProfileName}."); }
 
-        _application = new HttpClient();
-        _application.BaseAddress = new Uri(_launchArguments ?? profile.Url);
+        _application = new HttpClient
+        {
+            BaseAddress = new Uri(_launchArguments ?? profile.Url)
+        };
 
         return _application;
     }
