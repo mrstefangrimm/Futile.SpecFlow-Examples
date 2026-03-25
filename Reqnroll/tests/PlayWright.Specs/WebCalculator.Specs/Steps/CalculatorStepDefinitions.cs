@@ -20,6 +20,12 @@ public class CalculatorStepDefinitions(ICalculatorService calculatorService, Pla
         driver.SelectProfile("Futile Calculator slowmo");
     }
 
+    [Given("slowmo local profile is selected and the URL is {string}")]
+    public void GivenSlowmoLocalProfileIsSelectedAndTheURLIs(string arg)
+    {
+        driver.SelectProfile("Futile Calculator slowmo local url", arg);
+    }
+
     [Given("the first number is {int}")]
     public async Task GivenTheFirstNumberIs(int p0)
     {

@@ -1,21 +1,8 @@
-Feature: Calculator
+Feature: PlayWright Minimal
+The futile calculator opens and mathematical operation are correct
 
 Scenario: Add two numbers
     Given the first number is 50
-    And the second number is 70
-    When the two numbers are added
-    Then the result should be 120
-
-Scenario: Add two numbers headless
-    Given headless profile is selected
-    And the first number is 50
-    And the second number is 70
-    When the two numbers are added
-    Then the result should be 120
-
-Scenario: Add two numbers in slow motion
-    Given profile is selected with slowmo
-    And the first number is 50
     And the second number is 70
     When the two numbers are added
     Then the result should be 120

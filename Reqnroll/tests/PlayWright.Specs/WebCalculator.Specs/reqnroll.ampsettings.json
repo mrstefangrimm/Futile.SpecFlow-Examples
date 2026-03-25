@@ -16,6 +16,12 @@
         "url": "https://futile-calculator.netlify.app/",
         "slowMo": 1000,
         "chromeExecutablePath": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+      },
+      "Futile Calculator slowmo local url": {
+        "url": " https://localhost:5001",
+        "headless": false,
+        "slowMo": 1000,
+        "chromeExecutablePath": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
       }
     }
   }
