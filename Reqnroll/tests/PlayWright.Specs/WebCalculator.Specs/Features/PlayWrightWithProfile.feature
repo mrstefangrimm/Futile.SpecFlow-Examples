@@ -1,4 +1,4 @@
-Feature: PlayWright with Profiles
+Feature: PlayWright with Profile
 The futile calculator uses the selected profile. It takes the first profile is none is selected.
 
 Scenario: Add two numbers without profile

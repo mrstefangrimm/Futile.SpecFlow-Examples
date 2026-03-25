@@ -32,6 +32,7 @@ public class CalculatorMainWindow
         return ResultTextBox.Text;
     }
 
+    public Label Title => _driver.Stub.FindFirstDescendant("label_CommandlineArgs").AsLabel();
     public TextBox FirstNumberTextBox => _driver.Stub.FindFirstDescendant("TextBoxFirst").AsTextBox();
     public TextBox SecondNumberTextBox => _driver.Stub.FindFirstDescendant("TextBoxSecond").AsTextBox();
     public TextBox ResultTextBox => _driver.Stub.FindFirstDescendant("TextBoxResult").AsTextBox();

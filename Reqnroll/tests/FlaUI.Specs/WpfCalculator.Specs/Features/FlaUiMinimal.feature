@@ -1,4 +1,5 @@
-Feature: Calculator
+Feature: FlaUI Minimal
+The WPF calculator opens and mathematical operation are correct
 
 Scenario: Add two numbers
     Given the first number is 50
