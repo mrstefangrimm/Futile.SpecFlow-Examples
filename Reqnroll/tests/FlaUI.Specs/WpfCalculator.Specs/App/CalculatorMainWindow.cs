@@ -5,7 +5,7 @@ namespace WpfCalculator.Specs.App;
 
 public class CalculatorMainWindow
 {
-    private readonly FlaUIDriver? _driver;
+    private readonly FlaUIDriver _driver;
 
     public CalculatorMainWindow(FlaUIDriver driver)
     {

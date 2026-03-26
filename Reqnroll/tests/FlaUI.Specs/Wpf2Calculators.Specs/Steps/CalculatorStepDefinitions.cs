@@ -25,20 +25,27 @@ public class CalculatorStepDefinitions(ICalculatorService<Profile.One> calculato
     public void GivenTheSecondNumberIs(int p0)
     {
         _calculatorOne.MainWindow.EnterSecondNumber(p0.ToString());
+        _calculatorTwo.MainWindow.EnterSecondNumber(p0.ToString());
     }
 
     [When("the two numbers are added")]
     public void WhenTheTwoNumbersAreAdded()
     {
         _calculatorOne.MainWindow.ClickAdd();
+        _calculatorTwo.MainWindow.ClickAdd();
     }
 
     [Then("the result should be {int}")]
     public void ThenTheResultShouldBe(int p0)
     {
-        var actualResult = _calculatorOne.MainWindow.GetResult();
-        var actualInt = double.Parse(actualResult).ToInt();
+        var actualResultOne = _calculatorOne.MainWindow.GetResult();
+        var actualIntOne = double.Parse(actualResultOne).ToInt();
 
-        actualInt.Should().Be(p0);
+        actualIntOne.Should().Be(p0);
+
+        var actualResultTwo = _calculatorOne.MainWindow.GetResult();
+        var actualIntTwo = double.Parse(actualResultTwo).ToInt();
+
+        actualIntTwo.Should().Be(p0);
     }
 }

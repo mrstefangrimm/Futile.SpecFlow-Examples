@@ -16,6 +16,7 @@
   <Folder Name="/tests/Specs/">
     <Project Path="tests/FlaUI.Specs/WpfCalculator.Specs/WpfCalculator.Specs.csproj" />
     <Project Path="tests/FlaUI.Specs/Wpf2Calculators.Specs/Wpf2Calculators.Specs.csproj" />
+    <Project Path="tests/FlaUI.Specs/WindowsCalculator.Specs/WindowsCalculator.Specs.csproj" />
     <Project Path="tests/PlayWright.Specs/WebCalculator.Specs/WebCalculator.Specs.csproj" />
     <Project Path="tests/HttpClient.Specs/WeatherApi.Specs/WeatherApi.Specs.csproj" />
     <Project Path="tests/HttpClient.Specs/WebCalculatorApi.Specs/WebCalculatorApi.Specs.csproj" />

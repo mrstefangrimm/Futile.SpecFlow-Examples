@@ -1,14 +1,11 @@
 using Autofac;
 using Reqnroll.Amp;
 using Reqnroll.Autofac;
-using WpfCalculator.Specs.App;
-using WpfCalculator.Specs.Services;
-using WpfCalculator.Specs.Steps;
-using Xunit;
+using WindowsCalculator.Specs.App;
+using WindowsCalculator.Specs.Services;
+using WindowsCalculator.Specs.Steps;
 
-[assembly: CollectionBehavior(DisableTestParallelization = true)]
-
-namespace WpfCalculator.Specs;
+namespace WindowsCalculator.Specs;
 
 public static class TestStartup
 {
@@ -20,7 +17,7 @@ public static class TestStartup
 
         builder.RegisterType<CalculatorStepDefinitions>().InstancePerDependency();
         builder.RegisterType<CalculatorMainWindow>().AsSelf().InstancePerDependency();
-        builder.RegisterType<CalculatorService>().As<ICalculatorService>().InstancePerLifetimeScope();
+        builder.RegisterType<CalculatorService>().AsSelf().InstancePerLifetimeScope();
         builder.RegisterType<FlaUIDriver>().AsSelf().InstancePerLifetimeScope();
     }
 }
