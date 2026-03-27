@@ -13,7 +13,7 @@ public class FlaUIDriverBase : AmpDriver<Window>, IDisposable
     private Application? _application;
     private bool _disposed;
 
-    public FlaUIDriverBase(IOptions<AmpSettings> appSettings) : base(appSettings) { }
+    public FlaUIDriverBase(IOptions<AmpSettings> appSettings, IDriverInstanceFactory<Window>? instanceFactory) : base(appSettings, instanceFactory) { }
 
     ~FlaUIDriverBase()
     {
@@ -32,16 +32,21 @@ public class FlaUIDriverBase : AmpDriver<Window>, IDisposable
 
     protected override Window LaunchProfile()
     {
-        var flu = _appSettings.Value.FlaUi;
+        if (_instanceFactory != null)
+        {
+            return _instanceFactory.Create();
+        }
 
-        AutomationBase automation = flu.Settings.UIA switch
+        var flaUi = _appSettings.Value.FlaUi;
+
+        AutomationBase automation = flaUi.Settings.UIA switch
         {
             FlaUIA.UIA2 => new UIA2Automation(),
             FlaUIA.UIA3 => new UIA3Automation(),
-            _ => throw new InvalidOperationException($"Invalid FlaUI Automation {flu.Settings.UIA}."),
+            _ => throw new InvalidOperationException($"Invalid FlaUI Automation {flaUi.Settings.UIA}."),
         };
 
-        var profiles = flu.Profiles;
+        var profiles = flaUi.Profiles;
         if (profiles == null || !profiles.Any()) { throw new InvalidOperationException("No FlaUI profile defined"); }
 
         if (_launchProfileName == null)
@@ -97,10 +102,12 @@ public class FlaUIDriverBase : AmpDriver<Window>, IDisposable
 
 public sealed class FlaUIDriver : FlaUIDriverBase
 {
-    public FlaUIDriver(IOptions<AmpSettings> appSettings) : base(appSettings) { }
+    public FlaUIDriver(IOptions<AmpSettings> appSettings) : base(appSettings, null) { }
+    public FlaUIDriver(IOptions<AmpSettings> appSettings, IDriverInstanceFactory<Window> instanceFactory) : base(appSettings, instanceFactory) { }
 }
 
 public sealed class FlaUIDriver<N> : FlaUIDriverBase
 {
-    public FlaUIDriver(IOptions<AmpSettings> appSettings) : base(appSettings) { }
+    public FlaUIDriver(IOptions<AmpSettings> appSettings) : base(appSettings, null) { }
+    public FlaUIDriver(IOptions<AmpSettings> appSettings, IDriverInstanceFactory<Window> instanceFactory) : base(appSettings, instanceFactory) { }
 }

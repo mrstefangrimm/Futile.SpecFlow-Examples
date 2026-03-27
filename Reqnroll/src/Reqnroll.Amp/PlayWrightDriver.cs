@@ -5,10 +5,10 @@ namespace Reqnroll.Amp;
 
 public class PlayWrightDriverBase : AmpDriver<Task<IPage>>, IDisposable, IAsyncDisposable
 {
-    private IPage? _application;
+    private IPage? _homePage;
     private bool _disposed;
 
-    public PlayWrightDriverBase(IOptions<AmpSettings> appSettings) : base(appSettings) { }
+    public PlayWrightDriverBase(IOptions<AmpSettings> appSettings, IDriverInstanceFactory<Task<IPage>>? instanceFactory) : base(appSettings, instanceFactory) { }
 
     ~PlayWrightDriverBase()
     {
@@ -17,6 +17,11 @@ public class PlayWrightDriverBase : AmpDriver<Task<IPage>>, IDisposable, IAsyncD
 
     protected override async Task<IPage> LaunchProfile()
     {
+        if (_instanceFactory != null)
+        {
+            return await _instanceFactory.Create();
+        }
+
         var apiSettings = _appSettings.Value.Playwright;
 
         var profiles = apiSettings.Profiles;
@@ -39,11 +44,11 @@ public class PlayWrightDriverBase : AmpDriver<Task<IPage>>, IDisposable, IAsyncD
             ExecutablePath = profile.ChromeExecutablePath
         }).ConfigureAwait(false);
 
-        _application = await browser.NewPageAsync().ConfigureAwait(false);
+        _homePage = await browser.NewPageAsync().ConfigureAwait(false);
 
-        await _application.GotoAsync(_launchArguments ?? profile.Url);
+        await _homePage.GotoAsync(_launchArguments ?? profile.Url);
 
-        return _application;
+        return _homePage;
     }
 
     public void Dispose()
@@ -59,10 +64,10 @@ public class PlayWrightDriverBase : AmpDriver<Task<IPage>>, IDisposable, IAsyncD
             return;
         }
 
-        if (_application != null && !_application.IsClosed)
+        if (_homePage != null && !_homePage.IsClosed)
         {
-            await _application.CloseAsync();
-            _application = null;
+            await _homePage.CloseAsync();
+            _homePage = null;
         }
 
         _disposed = true;
@@ -75,11 +80,11 @@ public class PlayWrightDriverBase : AmpDriver<Task<IPage>>, IDisposable, IAsyncD
             return;
         }
 
-        if (_application != null && !_application.IsClosed)
+        if (_homePage != null && !_homePage.IsClosed)
         {
-            var closingTask = _application.CloseAsync();
+            var closingTask = _homePage.CloseAsync();
             closingTask.Wait(TimeSpan.FromSeconds(5));
-            _application = null;
+            _homePage = null;
         }
 
         _disposed = true;
@@ -88,10 +93,12 @@ public class PlayWrightDriverBase : AmpDriver<Task<IPage>>, IDisposable, IAsyncD
 
 public sealed class PlayWrightDriver : PlayWrightDriverBase
 {
-    public PlayWrightDriver(IOptions<AmpSettings> appSettings) : base(appSettings) { }
+    public PlayWrightDriver(IOptions<AmpSettings> appSettings) : base(appSettings, null) { }
+    public PlayWrightDriver(IOptions<AmpSettings> appSettings, IDriverInstanceFactory<Task<IPage>> instanceFactory) : base(appSettings, instanceFactory) { }
 }
 
 public sealed class PlayWrightDriver<N> : PlayWrightDriverBase
 {
-    public PlayWrightDriver(IOptions<AmpSettings> appSettings) : base(appSettings) { }
+    public PlayWrightDriver(IOptions<AmpSettings> appSettings) : base(appSettings, null) { }
+    public PlayWrightDriver(IOptions<AmpSettings> appSettings, IDriverInstanceFactory<Task<IPage>> instanceFactory) : base(appSettings, instanceFactory) { }
 }

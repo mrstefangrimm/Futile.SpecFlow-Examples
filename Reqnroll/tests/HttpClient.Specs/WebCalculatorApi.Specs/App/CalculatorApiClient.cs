@@ -20,7 +20,7 @@ public class CalculatorApiClient
         string json = JsonSerializer.Serialize(new CalcuationRequest(first, second, oper));
         var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-        var response = await _driver.Stub.PostAsync("", content);
+        var response = await _driver.Stub.PostAsync(string.Empty, content);
         response.EnsureSuccessStatusCode();
 
         var result = await response.Content.ReadFromJsonAsync<CalculationResponse>();

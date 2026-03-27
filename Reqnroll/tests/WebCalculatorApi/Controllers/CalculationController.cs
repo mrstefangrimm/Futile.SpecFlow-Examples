@@ -1,24 +1,16 @@
 using Microsoft.AspNetCore.Mvc;
+using WebCalculatorApi.Services;
 
 namespace WebCalculatorApi.Controllers;
 
 [Route("api/calculation")]
 [ApiController]
-public class CalculationController : ControllerBase
+public class CalculationController(ICalculationService calculationService) : ControllerBase
 {
     [HttpPost]
-    public CalculationResponse Post([FromBody] CalcuationRequest value)
+    public CalculationResponse Post([FromBody] CalcuationRequest request)
     {
-        return value.MathOperation switch
-        {
-            "Add" => new CalculationResponse(value.FirstNumber + value.SecondNumber),
-            "Subtract" => new CalculationResponse(value.FirstNumber - value.SecondNumber),
-            "Multiply" => new CalculationResponse(value.FirstNumber * value.SecondNumber),
-            "Divide" => value.SecondNumber != 0
-                                ? new CalculationResponse(value.FirstNumber * 1d / value.SecondNumber)
-                                : throw new DivideByZeroException("Cannot divide by zero."),
-            _ => throw new ArgumentException($"Unknown operation: {value.MathOperation}"),
-        };
+        return calculationService.Calculate(request);
     }
 }
 

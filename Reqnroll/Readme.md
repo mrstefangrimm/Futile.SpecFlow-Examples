@@ -31,6 +31,7 @@ Limitations (difference to specflow.action.plugins)
 - Uses chrome and PlayWright for Web UI testing
 - Uses FlaUI for Windows application testing
 - Uses xunit.v3
+- Uses Autofac
 
 Personal opinion: Which testing frameworks is an system architure decision. To later change to a different framework is hard. To write a Selenium driver for example is easy; just copy and modify `PlayWrightDriver`. 
 

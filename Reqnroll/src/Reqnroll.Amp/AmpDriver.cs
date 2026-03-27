@@ -8,10 +8,12 @@ public abstract class AmpDriver<T>
     protected string? _launchProfileName;
     protected string? _launchArguments;
     protected Lazy<T> _lazyInstance;
+    protected IDriverInstanceFactory<T>? _instanceFactory;
 
-    public AmpDriver(IOptions<AmpSettings> appSettings)
+    public AmpDriver(IOptions<AmpSettings> appSettings, IDriverInstanceFactory<T>? instanceFactory)
     {
         _appSettings = appSettings;
+        _instanceFactory = instanceFactory;
         _lazyInstance = new Lazy<T>(LaunchProfile);
     }
 

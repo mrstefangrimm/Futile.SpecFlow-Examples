@@ -4,13 +4,18 @@ namespace Reqnroll.Amp;
 
 public class HttpClientDriverBase : AmpDriver<HttpClient>, IDisposable
 {
-    private HttpClient? _application;
+    private HttpClient? _instance;
     private bool _disposed;
 
-    public HttpClientDriverBase(IOptions<AmpSettings> appSettings) : base(appSettings) { }
+    public HttpClientDriverBase(IOptions<AmpSettings> appSettings, IDriverInstanceFactory<HttpClient>? instanceFactory) : base(appSettings, instanceFactory) { }
 
     protected override HttpClient LaunchProfile()
     {
+        if (_instanceFactory != null)
+        {
+            return _instanceFactory.Create();
+        }
+
         var apiSettings = _appSettings.Value.WebApi;
 
         var profiles = apiSettings.Profiles;
@@ -25,12 +30,12 @@ public class HttpClientDriverBase : AmpDriver<HttpClient>, IDisposable
         var profile = profiles[_launchProfileName];
         if (profile == null) { throw new InvalidOperationException($"Invalid profile with name {_launchProfileName}."); }
 
-        _application = new HttpClient
+        _instance = new HttpClient
         {
             BaseAddress = new Uri(_launchArguments ?? profile.Url)
         };
 
-        return _application;
+        return _instance;
     }
 
     public void Dispose()
@@ -40,10 +45,10 @@ public class HttpClientDriverBase : AmpDriver<HttpClient>, IDisposable
             return;
         }
 
-        if (_application != null)
+        if (_instance != null)
         {
-            _application.Dispose();
-            _application = null;
+            _instance.Dispose();
+            _instance = null;
         }
 
         _disposed = true;
@@ -52,10 +57,12 @@ public class HttpClientDriverBase : AmpDriver<HttpClient>, IDisposable
 
 public class HttpClientDriver : HttpClientDriverBase
 {
-    public HttpClientDriver(IOptions<AmpSettings> appSettings) : base(appSettings) { }
+    public HttpClientDriver(IOptions<AmpSettings> appSettings) : base(appSettings, null) { }
+    public HttpClientDriver(IOptions<AmpSettings> appSettings, IDriverInstanceFactory<HttpClient> instanceFactory) : base(appSettings, instanceFactory) { }
 }
 
 public class HttpClientDriver<N> : HttpClientDriverBase
 {
-    public HttpClientDriver(IOptions<AmpSettings> appSettings) : base(appSettings) { }
+    public HttpClientDriver(IOptions<AmpSettings> appSettings) : base(appSettings, null) { }
+    public HttpClientDriver(IOptions<AmpSettings> appSettings, IDriverInstanceFactory<HttpClient> instanceFactory) : base(appSettings, instanceFactory) { }
 }

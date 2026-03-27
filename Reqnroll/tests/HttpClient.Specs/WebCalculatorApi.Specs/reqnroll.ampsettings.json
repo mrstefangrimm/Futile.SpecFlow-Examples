@@ -1,11 +1,8 @@
 {
   "webapi": {
     "profiles": {
-      "Weather v1": {
+      "Calculator": {
         "url": "http://localhost:5222/api/calculation"
-      },
-      "Weather v2": {
-        "url": "http://localhost:8080/api/v2"
       }
     }
   }
