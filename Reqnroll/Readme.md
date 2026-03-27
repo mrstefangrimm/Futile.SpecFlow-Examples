@@ -5,7 +5,7 @@
   </tr>
 </table>
 
-Reqnroll.Amp is a class library that boosts (amplifies) your test‑writing. Reqnroll is BDD testing environment for C#. Reqnroll.Amp is a tiny class library on top of Reqnroll.
+Reqnroll.Amp is a class library that boosts (amplifies) your test‑writing. [Reqnroll](https://reqnroll.net/) is BDD testing environment for C#. Reqnroll.Amp is a tiny class library on top of Reqnroll.
 
 
 
@@ -23,17 +23,17 @@ Reqnroll.Amp is a class library that boosts (amplifies) your test‑writing. Req
 
 The e2e tests in `test` are best suited to get started. The source code contains tests for all of the features listed above.
 
-| Test Project | Feature | Description | Link |
-| -- | -- | -- | -- |
-| WebCalculator.Specs | PlayWrightMinimal | Tests the online calculator https://futile-calculator.netlify.app/ | github/ |
-| WebCalculator.Specs | PlayWrightProfile | Tests the online calculator with different profiles (e.g. testing in slow motion) | github/ |
-| WebCalculator.Specs | PlayWrightProfile | Tests the online calculator with a command line argument that is defined in the test (i.e. as a variable) | github/ |
-| WpfCalculator.Specs | FlaUiMinimal | Tests the WpfCalculator.exe | github/ |
-| WpfCalculator.Specs | FlaUiWithProfile | Tests the WpfCalculator.exe with different profiles | github/ |
-| WpfCalculator.Specs | FlaUiWithProfileAndArgument | Tests the WpfCalculator.exe with a command line argument that is defined in the test (i.e. as a variable) | github/ |
-| Wpf2Calculator.Specs | FlaUI | Tests two WpfCalculator.exe at the same time. | github/ |
-| WindowsCalculator.Specs | FlaUI | Tests the Windows calculator. | github/ |
-| WebCalculatorApi.Specs | HttpClientTestHost | Tests the calculator Web Api by starting a te | github/ |
+| Test Project | Feature | Description |
+| -- | -- | -- |
+| WebCalculator.Specs | PlayWrightMinimal | Tests the online calculator https://futile-calculator.netlify.app/ |
+| WebCalculator.Specs | PlayWrightProfile | Tests the online calculator with different profiles (e.g. testing in slow motion) |
+| WebCalculator.Specs | PlayWrightProfile | Tests the online calculator with a command line argument that is defined in the test (i.e. as a variable) |
+| WpfCalculator.Specs | FlaUiMinimal | Tests the WpfCalculator.exe |
+| WpfCalculator.Specs | FlaUiWithProfile | Tests the WpfCalculator.exe with different profiles |
+| WpfCalculator.Specs | FlaUiWithProfileAndArgument | Tests the WpfCalculator.exe with a command line argument that is defined in the test (i.e. as a variable) |
+| Wpf2Calculator.Specs | FlaUI | Tests two WpfCalculator.exe at the same time |
+| WindowsCalculator.Specs | FlaUI | Tests the Windows calculator. |
+| WebCalculatorApi.Specs | HttpClientTestHost | Tests the calculator Web Api by starting a ASP.NET TestHost |
 
 
 
@@ -45,32 +45,33 @@ The examples are bigger than tests. The examples do not try to solve "real world
 
 ## How it works
 
-by using FlaUIPlayWrightusing HttpClientTest profiles in `reqnroll.ampsettings.json` which can be selected at runtime
+While Reqnroll does the hard stuff and lets you use BDD for unit tests, integration tests, e2e test with any framework that is on the market (PlayWright, Selenium, ... you name it), various DI frameworks, Testing frameworks (MSTest, NUnit, xUnit), Reqnroll.Amp comes with some hard-wired decisions.
 
 
 
-Limitations (difference to specflow.action.plugins)
+Reqnroll.Amp uses:
 
-- Uses chrome and PlayWright for Web UI testing
-- Uses FlaUI for Windows application testing
-- Uses xunit.v3
-- Uses Autofac
+- Reqnroll
+- Chrome browser and PlayWright for Web UI testing
+- FlaUI for Windows application testing
+- xunit.v3
+- Autofac
 
-Personal opinion: Which testing frameworks is an system architecture decision. To later change to a different framework is hard. To write a Selenium driver for example is easy; just copy and modify `PlayWrightDriver`. 
 
 
-Repository structure
-- examples: examples use Futile.Reqnroll.Amp nuget package from nuget.org. Examples are more complex than tests
-- tests: test the features and aspects of Reqnroll.Amp. Best entry point to learn
+Two features are unique:
+
+1. It is possible to define profiles in `reqnroll.ampsettings.json` which can be selected at runtime
+2. It is possible to start applications as part of a e2e test. Muliple Web UIs, APIs and Windows applications can be part of one test scenario
+
+
+
+## Repository structure
+
 - src: source code of the Reqnroll.Amp library
+- tests: test the features and aspects of Reqnroll.Amp. Best entry point to learn
+- examples: examples use Futile.Reqnroll.Amp nuget package from nuget.org. Examples are more complex than tests
 
 
 
-
-
-
----
-
-Build, air-gaped
-
-To work offline, use the batch files.
+If you want to work offline (air gapped), you may like the "Build-AmpArtifiacts" resp. "Build-AmpArtifiacts-windows" scripts. These scripts get all the package dependencies and compress the nuget packages into an archive (zip on Windows, tar.gz on Linux)
