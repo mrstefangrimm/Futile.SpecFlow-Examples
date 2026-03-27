@@ -50,7 +50,7 @@ public class HomePage(PlayWrightDriver driver)
     //    }
     //}
 
-    public async Task<string?> WaitForNonEmptyResultAsync()
+    public async Task<string> WaitForNonEmptyResultAsync()
     {
         // Waits for the ResultLabelSelector value to be !== ""
         await (await _driver.Stub).WaitForFunctionAsync($"document.querySelector(\"{ResultLabelSelector}\").value !== \"\"");

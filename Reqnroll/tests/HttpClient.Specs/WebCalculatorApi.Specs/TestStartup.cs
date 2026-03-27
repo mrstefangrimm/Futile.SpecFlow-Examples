@@ -1,11 +1,8 @@
 using Autofac;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
-using Microsoft.Extensions.DependencyInjection;
 using Reqnroll.Amp;
 using Reqnroll.Autofac;
-using WebCalculatorApi.Controllers;
-using WebCalculatorApi.Services;
 using WebCalculatorApi.Specs.App;
 using WebCalculatorApi.Specs.Services;
 using WebCalculatorApi.Specs.Steps;
@@ -48,29 +45,16 @@ internal class CustomWebApplicationFactory : WebApplicationFactory<Program>
     {
         builder.ConfigureServices(services =>
         {
-            // Remove the real service
-            var descriptor = services.Single(d => d.ServiceType == typeof(ICalculationService));
-            services.Remove(descriptor);
+            // Intentionally commented out code.
+            // CalculationService should not be mocked. It is stateless and has no dependencies.
+            // The commented out code show how you could do the mocking.
+
+            // Remove the service
+            // var descriptor = services.Single(d => d.ServiceType == typeof(ICalculationService));
+            // services.Remove(descriptor);
 
             // Add your mock
-            services.AddSingleton<ICalculationService>(new CalculationMockService());
+            //services.AddScoped<ICalculationService, CalculationMockService>();
         });
-    }
-}
-
-internal class CalculationMockService : ICalculationService
-{
-    public CalculationResponse Calculate(CalcuationRequest request)
-    {
-        return request.MathOperation switch
-        {
-            "Add" => new CalculationResponse(request.FirstNumber + request.SecondNumber),
-            "Subtract" => new CalculationResponse(request.FirstNumber - request.SecondNumber),
-            "Multiply" => new CalculationResponse(request.FirstNumber * request.SecondNumber),
-            "Divide" => request.SecondNumber != 0
-                                ? new CalculationResponse(request.FirstNumber * 1d / request.SecondNumber)
-                                : throw new DivideByZeroException("Cannot divide by zero."),
-            _ => throw new ArgumentException($"Unknown operation: {request.MathOperation}"),
-        };
     }
 }
